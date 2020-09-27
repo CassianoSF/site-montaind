@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Poppins-Medium";
+  src: url('../Poppins-Medium.ttf') format('truetype'),
+    url('Poppins-Medium.woff') format('woff');
+}
+
+@keyframes slider-animation {
+  from {transform: scale(.9)}
+  to {transform: scale(1)}
+}
+
+.services h3, .section h1, .section h3 {
+  font-family: "Poppins-Medium", Arial, sans-serif !important;
+  font-weight: 500 !important;
+}
