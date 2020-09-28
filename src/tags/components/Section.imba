@@ -4,7 +4,7 @@ export default tag Section
 		<self>
 			<div.section.container>
 				<div.wrapper>
-					<h1.title> "O que Fazemos"
+					<h1.title> "Sobre a empresa"
 					<p.text> "Ipsum magna ut ullamco commodo occaecat enim non reprehenderit cillum. Velit sit consequat cupidatat nisi excepteur qui ad nulla excepteur. Id cillum ad enim pariatur et sint mollit excepteur. Sint exercitation nulla sunt ex velit commodo id minim tempor enim aliqua ea."
 					<div.grid>
 						<div.card>
@@ -44,7 +44,7 @@ export default tag Section
 								<h3> "Trabalho em Equipe"
 								<p> "Occaecat duis dolore non anim veniam reprehenderit cillum consectetur."
 						
-				<div.img[bgi: url("imgs/img.jpg")]>
+				<div.img[bgi: url("imgs/section5.jpg")]>
 			
 	css
 		.section
@@ -55,9 +55,6 @@ export default tag Section
 
 				h1, h3
 					c: black/80
-
-				h1
-					mb: 1.5rem
 
 				p
 					c: $grey
@@ -70,39 +67,32 @@ export default tag Section
 
 					.card
 						d: flex
-						mb: 1rem
 
 					.icon	
 						mt: .5rem
 						size: 80px
 						c: white
-						border-radius: 50%
+						br: full
 						bg: $orange
-						d: flex
+						d: flex ai: center
 						ta: center
-						ai: center
 
-						i@before
-							m:0
-							c: white
-							fs: 1.875rem
-							lh: 1.875rem
-						
 						i
 							w: 100%
-							h: auto
 
+							@before
+								fs: 1.875rem
+								lh: 1.875rem
+						
 					.text
-						width: calc( 100% - 80px)
+						width: calc(100% - 80px)
 						pl: 1rem
 
 						h3
 							fs: 1.25rem
-							mb: .5rem
 
 			.img
 				width: 100%
-				height: auto
 				bgs: cover
 				bgp: center
 

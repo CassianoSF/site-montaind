@@ -1,29 +1,29 @@
 export default tag Slider
 
 	prop slides = 4
-	prop number = 1
+	prop n = 1
 	prop timer
+	prop $slide = {}
+	prop $dot = {}
 
-	def changeImage imageNumber
+	def changeSlide slide
 		clearTimeout(timer)
-		let label = "r{number}"
-		document.querySelector("label[for={label}]").id = ""
-		number = imageNumber
+		$slide[n].classList.remove('show')
+		$dot[n].classList.remove('active')
+		n = slide
 		mount()
 
-	def autoChangeImage
+	def autoChangeSlide
 		timer = setTimeout(&, 5000) do
-			let label = "r{number}"
-			document.querySelector("label[for={label}]").id = ""
-			document.getElementById("r{number}").checked = false
-			number = number is slides ? 1 : number + 1			
+			$slide[n].classList.remove('show')
+			$dot[n].classList.remove('active')
+			n = n is slides ? 1 : n + 1			
 			mount()
 
 	def mount
-		document.getElementById("r{number}").checked = true
-		let label = "r{number}"
-		document.querySelector("label[for={label}]").id = "active"
-		autoChangeImage()
+		$slide[n].classList.add('show')
+		$dot[n].classList.add('active')
+		autoChangeSlide()
 
 	def unmount 
 		clearTimeout(timer)
@@ -32,121 +32,87 @@ export default tag Slider
 		<self>
 			<div.slider>
 				for i in [1 .. slides]
-					<input#r{i} type="radio" name="r">
-
-				for i in [1 .. slides]
-					<div$slide.slide.s{i}>
-						$slide.style.backgroundImage = "url(imgs/home{i}.jpg)"
-						<div.filter>
-						<div.text>
-							<h1> "Montagem e equipamentos industriais"
-							<p> "Pense numa frase bem legal aqui!"
-							<button.btn> "Peça um orçamento"
+					<div>
+						$slide[i] = <div.slide style="background-image: url(imgs/home{i}.jpg)">
+							<div.filter>
+							<div.container>
+								<div.wrapper>
+									<h1> "Montagem e Equipamentos Industriais"
+									<p> "Anim eiusmod cillum officia fugiat incididunt labore."
+									<button.btn> "Peça um orçamento"
 
 				<div.navigation>
 					for i in [1 .. slides]
-						<label.bar for="r{i}" :click=changeImage(i)>
+						<div>
+							$dot[i] = <label.dot @click=changeSlide(i)>
 
 	css
 		.slider
 			pos: relative
-			w: 100%
-			h: calc(100vh - 4rem)
-			of: hidden
-			
-			.filter
-				pos: absolute
-				t: 0
-				l: 0
-				b: 0
-				r: 0
-				o: .8
-				bg: linear-gradient(45deg, #0d1128 0%, #fd6100 100%)
+			h: calc(100vh - 4rem)		
+			animation: fadeIn 1s
 		
-			input[name="r"]
-				d: none
-			
-			#r1:checked ~ .s1
-				animation: slider-animation 1s	
-				o: 1
-				zi: 1
-			
-			#r2:checked ~ .s2
-				animation: slider-animation 1s
-				o: 1
-				zi: 1
-			
-			#r3:checked ~ .s3
-				animation: slider-animation 1s
-				o: 1
-				zi: 1
-			
-			#r4:checked ~ .s4
-				animation: slider-animation 1s
-				o: 1
-				zi: 1
-
-			#r5:checked ~ .s5
-				animation: slider-animation 1s
-				o: 1	
-				zi: 1	
+			.show
+				animation-name: fadeIn
 
 			.slide
-				w: 100% h: 100%
+				size: 100%
+				animation-duration: 1s
+				animation-fill-mode: both
 				bgs: cover
 				bgp: center
 				pos: absolute
-				tween: 1.5s
 				o: 0
-				zi: 0
+				
+				@not(.show)
+					animation-name: fadeOut
+					zi: -1
+			
+				.filter
+					pos: absolute t: 0 l: 0 b: 0 r: 0
+					o: .8
+					bg: linear-gradient(45deg, #0d1128 0%, #fd6100 100%)
 
-				.text
-					w: 50%
+				.container
 					c: white
 					pos: absolute
-					top: 50%
-					left: 5rem 
-					y: -50%
+					h: 100%
+					d: flex jc: center fld: column
 
-					h1
-						ff: sans
-						fs: 3.125rem
-						fw: 600
-						lh: 1.2
-						mb: 1.5rem
+					.wrapper
+						w: 50%
 
-					p
-						o: 90%
-						mb: 1rem
+						p
+							c: white/90
 
-					button
-						mt: 1rem
-						ff: sans
-						fs: 1rem
-						p: 1rem 1.5rem
+						.btn
+							mt: 1rem
+							c: white @hover: $orange
+							bg: $orange @hover: transparent
+							br: full
+							p: 1rem 1.5rem
+							bd: 1px solid $orange
+							cursor: pointer		
+							tween: .35s	
 
 			.navigation
-				zi: 1
 				d: flex
-				pos: absolute
-				b: 20px
-				l: 50%
-				x: -50%
+				pos: absolute b: 20px l: 50% x: -50%
+				zi: 1
 
-				.bar
-					mx: 6px
-					size: 10px
-					br: 50%
-					bg: white
-					cursor: pointer
-					tween: .4s
-					shadow: 0 0 5px black/50
-			
-					@hover
+				div
+					d: flex
+
+					.dot
+						mx: 6px
+						size: 10px
+						br: full
+						bg: white @hover: $orange
+						cursor: pointer
+						tween: .35s
+				
+					.active
 						bg: $orange
-			
-				#active
-					bg: $orange
 			
 			
 			

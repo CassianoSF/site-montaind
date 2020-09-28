@@ -1,5 +1,5 @@
 
-import './styles/global'
+import './style'
 
 import {Router} from './router/router'
 

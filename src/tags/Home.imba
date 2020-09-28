@@ -5,6 +5,7 @@ import Parallax from './components/Parallax'
 import Products from './components/Products'
 import Team from './components/Team'
 
+
 export default tag Home
 
 	def render

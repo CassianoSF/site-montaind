@@ -1,0 +1,82 @@
+global css @root
+
+	$font: "Poppins", Arial, sans-serif
+	$orange: #fd6001
+	$indigo: #0e1229
+	$grey: #666666
+
+	*
+		m: 0 p: 0 ff: $font
+
+	a
+		fs: 0.875rem
+		td: none
+
+	ul
+		list-style: none
+
+	h1
+		fs: 3.125rem
+		fw: 600
+		mb: 1.5rem
+		lh: 1.2
+	
+	h2
+		fs: 2rem
+		fw: 500
+		mb: 1.5rem
+
+	p
+		mb: 1rem
+		lh: 1.8
+
+	h3
+		fs: 1.375rem
+		fw: 500
+		mb: .5rem
+
+	small
+		fs: 0.875rem
+		c: $orange
+		ft: uppercase
+		ls: 1
+
+	button
+		fs: 1rem
+
+	i@before
+		m: 0 p: 0
+
+	.container
+		w: 100% px: 10%
+
+	@keyframes 
+		fadeInUp
+			0%
+				opacity: 0
+				visibility: hidden
+				transform: translate3d(0, 40px, 0)	
+			100%
+				visibility: visible
+				opacity: 1
+				transform: none
+		fadeIn
+			0%
+				opacity: 0
+				visibility: hidden
+				transform: scale(0.95)				
+			100%
+				opacity: 1
+				visibility: visible
+				transform: scale(1)				
+		fadeOut
+			0%
+				opacity: 1
+			100%
+				opacity: 0
+
+
+	
+
+
+
