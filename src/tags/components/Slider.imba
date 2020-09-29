@@ -1,28 +1,21 @@
 export default tag Slider
 
-	prop slides = 4
-	prop n = 1
+	prop slideCount = 4
+	prop active = 1
 	prop timer
-	prop $slide = {}
-	prop $dot = {}
 
-	def changeSlide slide
+	def changeSlide id
 		clearTimeout(timer)
-		$slide[n].classList.remove('show')
-		$dot[n].classList.remove('active')
-		n = slide
+		active = id
 		mount()
 
 	def autoChangeSlide
 		timer = setTimeout(&, 5000) do
-			$slide[n].classList.remove('show')
-			$dot[n].classList.remove('active')
-			n = n is slides ? 1 : n + 1			
+			active = active is slideCount ? 1 : active + 1		
+			render()
 			mount()
 
 	def mount
-		$slide[n].classList.add('show')
-		$dot[n].classList.add('active')
 		autoChangeSlide()
 
 	def unmount 
@@ -31,20 +24,19 @@ export default tag Slider
 	def render
 		<self>
 			<div.slider>
-				for i in [1 .. slides]
-					<div>
-						$slide[i] = <div.slide style="background-image: url(imgs/home{i}.jpg)">
-							<div.filter>
-							<div.container>
-								<div.wrapper>
-									<h1> "Montagem e Equipamentos Industriais"
-									<p> "Anim eiusmod cillum officia fugiat incididunt labore."
-									<button.btn> "Peça um orçamento"
+				for id in [1 .. slideCount]
+					let img = "url(imgs/home{id}.jpg)"
+					<div[bgi: {img}].slide .show=(id is active)>
+						<div.filter>
+						<div.container>
+							<div.wrapper>
+								<h1> "Montagem e Equipamentos Industriais"
+								<p> "Anim eiusmod cillum officia fugiat incididunt labore."
+								<button.btn> "Peça um orçamento"
 
 				<div.navigation>
-					for i in [1 .. slides]
-						<div>
-							$dot[i] = <label.dot @click=changeSlide(i)>
+					for id in [1 .. slideCount]
+						<label.dot .active=(id is active) @click=changeSlide(id)>
 
 	css
 		.slider
@@ -94,25 +86,24 @@ export default tag Slider
 							bd: 1px solid $orange
 							cursor: pointer		
 							tween: .35s	
+							outline: none
+							us: none
 
 			.navigation
 				d: flex
 				pos: absolute b: 20px l: 50% x: -50%
 				zi: 1
 
-				div
-					d: flex
-
-					.dot
-						mx: 6px
-						size: 10px
-						br: full
-						bg: white @hover: $orange
-						cursor: pointer
-						tween: .35s
-				
-					.active
-						bg: $orange
+				.dot
+					mx: 6px
+					size: 10px
+					br: full
+					bg: white @hover: $orange
+					cursor: pointer
+					tween: .35s
 			
+				.active
+					bg: $orange
+		
 			
 			

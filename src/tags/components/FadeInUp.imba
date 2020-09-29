@@ -2,18 +2,18 @@ export default tag FadeInUp
 
 	def mount
 		observer = new IntersectionObserver(&) do |entries|
-			entries.map do |entrie|
+			entries.forEach do |entrie|
 				if entrie.isIntersecting
-					animation = true 
+					animating = true 
 					render()
-		observer.observe($slot)
+		observer.observe($item)
 
 	def unmount
 		observer.disconnect()
 
 	def render
-		<self>
-			<div$slot[h: 100%] .fadeInUp=(animation) style="animation-delay: {delay}s">
+		<self [flb: 100%]=flb>
+			<div$item[size: 100% animation-delay: {delay+.3}s] .fadeInUp=(animating)>
 				<slot>
 
 	css
