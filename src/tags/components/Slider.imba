@@ -4,6 +4,16 @@ export default tag Slider
 	prop active = 1
 	prop timer
 
+	def prev
+		clearTimeout(timer)
+		active = active is 1 ? slideCount : active - 1
+		mount()
+
+	def next
+		clearTimeout(timer)
+		active = active is slideCount ? 1 : active + 1
+		mount()
+
 	def changeSlide id
 		clearTimeout(timer)
 		active = id
@@ -37,6 +47,11 @@ export default tag Slider
 				<div.navigation>
 					for id in [1 .. slideCount]
 						<label.dot .active=(id is active) @click=changeSlide(id)>
+
+				<div[r: 0 br: 100% 0% 0% 100% / 50% 0% 0% 50%].go @click=next()>
+					<i.fa.fa-angle-right>
+				<div[l: 0 br: 0% 100% 100% 0% / 0% 50% 50% 0%].go @click=prev()>
+					<i.fa.fa-angle-left>
 
 	css
 		.slider
@@ -104,6 +119,16 @@ export default tag Slider
 			
 				.active
 					bg: $orange
+			
+			.go
+				pos: absolute t:0 b: 0
+				w: 75px
+				tween: .35s
+				bg@hover: white/20
+				cursor: pointer
+				d: flex ai: center jc: center
+				fs: 2rem
+				c: white/50 @hover: white
 		
 			
 			

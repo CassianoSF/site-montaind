@@ -5,7 +5,7 @@ global css @root
 	$indigo: #0e1229
 	$grey: #666666
 
-	*
+	*@not(i)
 		m: 0 p: 0 ff: $font
 
 	a
