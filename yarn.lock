@@ -872,6 +872,11 @@ imba@^2.0.0-alpha.70:
   resolved "https://registry.yarnpkg.com/imba/-/imba-2.0.0-alpha.74.tgz#6d068776481e250e4813ec9242f8fbfdc740b5b5"
   integrity sha512-90nwXwT2nbMWZi9jzmr09BdEy7TMlWdRepkq+GrHznGc3pXuuAeScRHl72Jqot74XHTVPv/9rtpVqinpf7fBSQ==
 
+imba@^2.0.0-alpha.96:
+  version "2.0.0-alpha.96"
+  resolved "https://registry.yarnpkg.com/imba/-/imba-2.0.0-alpha.96.tgz#181a35d5c25a1b6eda857fc718e8ec6f79dbc87a"
+  integrity sha512-oFtPWpLMJybzJs3fcCWOhfvqnukMmyyLMi4VExdjDsLXY2ewKVwvlN0YUbbfB3PdTzx0FcFTrniDwfMNZhT0yg==
+
 import-fresh@^3.1.0, import-fresh@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-3.2.1.tgz#633ff618506e793af5ac91bf48b72677e15cbe66"

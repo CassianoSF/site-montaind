@@ -14,7 +14,9 @@
       "open": "default",
       "bundle": true
     },
-    "install": [],
+    "install": [
+      "imba"
+    ],
     "installOptions": {},
     "buildOptions": {},
     "plugins": [
@@ -33,6 +35,7 @@
     "snowpack": "^2.7.6"
   },
   "dependencies": {
+    "imba": "^2.0.0-alpha.96",
     "material-design-icons": "^3.0.1"
   }
 }
