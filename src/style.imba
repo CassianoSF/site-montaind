@@ -11,6 +11,7 @@ global css @root
 	a
 		fs: 0.875rem
 		td: none
+		us: none
 
 	ul
 		list-style: none

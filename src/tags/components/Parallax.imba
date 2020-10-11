@@ -30,7 +30,6 @@ export default tag Parallax
 				c: white/90
 			
 		.filter
-			content: ''
 			position: absolute
 			top: 0
 			left: 0
