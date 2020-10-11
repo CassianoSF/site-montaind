@@ -15,7 +15,8 @@
       "bundle": true
     },
     "install": [
-      "imba", 
+      "imba",
+      "imba/dist/imba-router",
       "firebase"
     ],
     "installOptions": {},

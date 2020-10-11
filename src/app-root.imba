@@ -1,7 +1,7 @@
 
 import './style'
 
-import {Router} from './router/router'
+import 'imba/dist/imba-router'
 
 import Navbar from './tags/components/Navbar'
 import Home from './tags/Home'
@@ -15,11 +15,12 @@ tag App
 	def render
 		<self>
 			<Admin route="/admin">
-			# <Navbar>
-			# <main[mt: 4rem pos: relative]>
-			# 	<Home route="/home">
-			# 	<Pieces route="/pecas">
-			# 	<Products route="/produtos">		
-			# <Footer>
+			<div route.exact="/">
+				<Navbar>
+				<main[mt: 4rem pos: relative]>
+					<Home route="/home">
+					<Pieces route="/pecas">
+					<Products route="/produtos">		
+				<Footer>
 
 imba.mount <App>

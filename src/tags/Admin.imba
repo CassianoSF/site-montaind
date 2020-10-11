@@ -1,10 +1,8 @@
 import {fb} from "../models/Firebase"
-import {Router} from '../router/router'
+import {Router} from  'imba/dist/imba-router'
+console.log(Router)
 
 export default tag Admin
-	
-	prop auth = true
-
 	def login
 		loading = true
 		try
@@ -17,34 +15,33 @@ export default tag Admin
 
 	def render
 		<self>
-			if auth
-				<div.auth>
-					<form.form autocomplete="off">
-						<h3> "LOGIN"
-						<input 
-							.input-error=error 
-							bind=email
-							type="email"
-							placeholder="E-mail"
-							autofocus
-							required
-							:keydown.enter.login>
-						<input 
-							.input-error=error 
-							bind=password
-							type="text"
-							placeholder="Senha"
-							autocomplete="new-password"
-							required
-							:keydown.enter.login>
+			<div.auth>
+				<form.form autocomplete="off">
+					<h3> "LOGIN"
+					<input 
+						.input-error=error 
+						bind=email
+						type="email"
+						placeholder="E-mail"
+						autofocus
+						required
+						:keydown.enter.login>
+					<input 
+						.input-error=error 
+						bind=password
+						type="text"
+						placeholder="Senha"
+						autocomplete="new-password"
+						required
+						:keydown.enter.login>
 
-						<button.btn type="submit" :click.prevent.login>
-							if loading
-								<i.icon.fa.fa-spinner.fa-pulse>
-							else
-								<i.icon.fa.fa-sign-in>
-							"Entrar"
-						<span.error> "E-mail ou senha inválidos." if error
+					<button.btn type="submit" :click.prevent.login>
+						if loading
+							<i.icon.fa.fa-spinner.fa-pulse>
+						else
+							<i.icon.fa.fa-sign-in>
+						"Entrar"
+					<span.error> "E-mail ou senha inválidos." if error
 
 	css
 		.auth
