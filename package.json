@@ -35,6 +35,7 @@
     "snowpack": "^2.7.6"
   },
   "dependencies": {
+    "firebase": "^7.23.0",
     "imba": "^2.0.0-alpha.96",
     "material-design-icons": "^3.0.1"
   }
