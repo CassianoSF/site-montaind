@@ -1,13 +1,11 @@
 import {fb} from "../models/Firebase"
 import {Router} from  'imba/dist/imba-router'
-console.log(Router)
 
 export default tag Admin
 	def login
 		loading = true
 		try
 			const res = await fb.doLogin(email, password)
-			console.log router
 			router.go('/test')
 		catch err
 			error = true

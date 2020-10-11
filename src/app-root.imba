@@ -11,16 +11,18 @@ import Admin from './tags/Admin'
 import Footer from './tags/components/Footer'
 
 tag App
-	
+	def mount
+		if router.path == "/"
+			router.go('/home')
 	def render
 		<self>
 			<Admin route="/admin">
-			<div route.exact="/">
+			<div route="/home">
 				<Navbar>
 				<main[mt: 4rem pos: relative]>
-					<Home route="/home">
-					<Pieces route="/pecas">
-					<Products route="/produtos">		
+					<Home route="">
+					<Pieces route="pecas">
+					<Products route="produtos">		
 				<Footer>
 
 imba.mount <App>
