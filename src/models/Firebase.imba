@@ -1,6 +1,4 @@
-import app from 'firebase/app'
-import 'firebase/auth'
-import 'firebase/firestore'
+import firebase from 'firebase'
 
 const config = {
 	apiKey: "AIzaSyBWZvlUF8nBvGuyMxsEllXHPOjRKmDfgSI"
@@ -12,15 +10,14 @@ const config = {
 	appId: "1:367409790951:web:5988f4273d381b85008742"
 }
 
-export defaut class Firebase
+class Firebase
 
 	prop authUser
 
 	def constructor
-		app.initializeApp(config)
-		firestore = app.firestore()
-		auth = app.auth()
-		fb.auth.onAuthStateChanged(do |user| authUser = user)
+		firebase.initializeApp(config)
+		firestore = firebase.firestore()
+		auth = firebase.auth()
 
 	def getItem tipo
 		firestore.collection("items").where("tipo", "==", tipo).get()
@@ -40,5 +37,4 @@ export defaut class Firebase
 	def doLogout
 		auth.signOut()
 
-	
-	
+export const fb = new Firebase

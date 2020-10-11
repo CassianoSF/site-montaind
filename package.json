@@ -15,7 +15,8 @@
       "bundle": true
     },
     "install": [
-      "imba"
+      "imba", 
+      "firebase"
     ],
     "installOptions": {},
     "buildOptions": {},
