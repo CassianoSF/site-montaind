@@ -1,4 +1,19 @@
 export default tag Navbar
+
+	prop links = [
+		route: "home"
+		name: "Home"
+		---
+		route: "pecas"
+		name: "Peças"
+		---
+		route: "produtos"
+		name: "Produtos"
+		---
+		route: "orcamento"
+		name: "Orçamento"
+	]
+
 	def render
 		<self>
 			<div.navbar>
@@ -6,14 +21,9 @@ export default tag Navbar
 					<a.brand route-to="home">
 						<img src="imgs/logo.png">
 					<ul.menu>
-						<li.nav-item route-to="home">
-							<a.nav-link.active> "Home"
-						<li.nav-item route-to="pecas">
-							<a.nav-link> "Peças"
-						<li.nav-item route-to="produtos">
-							<a.nav-link> "Produtos"
-						<li.nav-item route-to="orcamento">
-							<a.nav-link> "Orçamento"
+						for link in links 
+							<li.nav-item route-to=link.route>
+								<a.nav-link .active=(router.path.match(RegExp.new(link.route)))> link.name
 
 	css
 		.navbar

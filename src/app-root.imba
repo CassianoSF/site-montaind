@@ -10,19 +10,30 @@ import Products from './tags/Products'
 import Admin from './tags/Admin'
 import Footer from './tags/components/Footer'
 
-tag App
-	def mount
-		if router.path == "/"
-			router.go('/home')
+tag Crud
 	def render
 		<self>
-			<Admin route="/admin">
-			<div route="/home">
+			<h1>
+				router.path
+
+tag App
+	def mount
+		console.log(router)
+		if router.path == "/"
+			router.go('/#/site/home')
+	def render
+		<self>
+			<div route="/#/admin">
+				<Admin route="login">
+				<Crud route="pecas">
+				<Crud route="produtos">
+			<div route="/#/site">
 				<Navbar>
 				<main[mt: 4rem pos: relative]>
-					<Home route="">
+					<Home route="home">
 					<Pieces route="pecas">
 					<Products route="produtos">		
 				<Footer>
 
 imba.mount <App>
+

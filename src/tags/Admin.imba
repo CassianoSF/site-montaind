@@ -1,5 +1,4 @@
 import {fb} from "../models/Firebase"
-import {Router} from  'imba/dist/imba-router'
 
 export default tag Admin
 	def login
