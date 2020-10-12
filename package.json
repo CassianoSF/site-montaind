@@ -14,6 +14,9 @@
       "open": "default",
       "bundle": true
     },
+    "proxy": {
+      "/*/*": "http://localhost:8080/index.html"
+    },
     "install": [
       "imba",
       "imba/dist/imba-router",

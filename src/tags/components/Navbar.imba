@@ -1,3 +1,5 @@
+import {fb} from '../../models/Firebase'
+
 export default tag Navbar
 
 	prop links = [
@@ -14,17 +16,28 @@ export default tag Navbar
 		name: "Orçamento"
 	]
 
+	prop logout = false
+
+	def doLogout
+		fb.doLogout()
+		router.go('/admin')
+
 	def render
 		<self>
 			<div.navbar>
 				<div.container>
 					<a.brand route-to="home">
-						<img src="imgs/logo.png">
+						<img src="/imgs/logo.png">
 					<ul.menu>
 						for link in links 
 							<li.nav-item route-to=link.route>
 								<a.nav-link .active=(router.path.match(RegExp.new(link.route)))> link.name
-
+						
+						<li.nav-item> if logout
+							<button.btn[ml: 2rem] @click.doLogout()>  
+								<i.fa.fa-sign-out[mr:.5rem]>
+								"Sair"
+	
 	css
 		.navbar
 			w: 100%
@@ -55,3 +68,14 @@ export default tag Navbar
 						.active
 							cursor: default
 							c: $orange
+
+				.btn
+					c: white @hover: $orange
+					bg: $orange @hover: transparent
+					rd: full
+					p: .375rem .75rem
+					bd: 1px solid $orange
+					cursor: pointer		
+					tween: .35s	
+					outline: none
+					us: none

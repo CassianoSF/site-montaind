@@ -42,6 +42,15 @@ global css @root
 		ft: uppercase
 		ls: 1
 
+	table, table *
+		margin: 0
+		padding: 0
+		background: none
+		border: none
+		border-collapse: collapse
+		border-spacing: 0
+		background-image: none
+
 	button
 		fs: 1rem
 

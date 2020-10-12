@@ -1,38 +1,43 @@
 import {fb} from "../models/Firebase"
 
 export default tag Admin
-	def login
+
+	def clear error=false
+		loading = false
+		error = error
+		password = ""
+
+	def doLogin
 		loading = true
 		try
-			const res = await fb.doLogin(email, password)
-			router.go('/test')
+			await fb.doLogin(email, password)
+			clear()
+			router.go('/admin/itens/produtos')
 		catch err
-			error = true
-			loading = false
+			console.log "sdas"
+			clear(true)
 
 	def render
 		<self>
 			<div.auth>
-				<form.form autocomplete="off">
-					<h3> "LOGIN"
+				<div.form>
+					<h3 [bg@after:$orange]=hover> "LOGIN"
 					<input 
 						.input-error=error 
 						bind=email
 						type="email"
 						placeholder="E-mail"
 						autofocus
-						required
-						:keydown.enter.login>
+						:keydown.enter.doLogin()>
 					<input 
 						.input-error=error 
 						bind=password
-						type="text"
+						type="password"
 						placeholder="Senha"
 						autocomplete="new-password"
-						required
-						:keydown.enter.login>
+						:keydown.enter.doLogin()>
 
-					<button.btn type="submit" :click.prevent.login>
+					<button.btn type="button" @mouseover=(do hover=true) @mouseout=(do hover=false) :click.doLogin()>
 						if loading
 							<i.icon.fa.fa-spinner.fa-pulse>
 						else
@@ -64,6 +69,7 @@ export default tag Admin
 
 					@after
 						content: ''
+						tween: .35s
 						bg: #5D50C6
 						w: 72px
 						h: 5px
