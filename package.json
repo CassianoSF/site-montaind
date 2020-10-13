@@ -1,44 +1,17 @@
 {
   "scripts": {
-    "dev": "npx snowpack dev",
-    "start": "npx snowpack dev",
-    "build": "npx snowpack build"
-  },
-  "snowpack": {
-    "mount": {
-      "src": "/dist",
-      "static": "/"
-    },
-    "devOptions": {
-      "out": "public",
-      "open": "default",
-      "bundle": true
-    },
-    "install": [
-      "imba",
-      "imba/dist/imba-router",
-      "firebase"
-    ],
-    "installOptions": {},
-    "buildOptions": {
-      "minify": true
-    },
-    "plugins": [
-      [
-        "imba-snowpack",
-        {
-          "entrypoints": [
-            "app-root"
-          ]
-        }
-      ]
-    ]
+    "dev": "webpack-dev-server --hot --content-base dist/",
+    "build": "webpack --mode=production",
+    "watch": "webpack --mode=development --watch --progress --colors --display-modules"
   },
   "devDependencies": {
-    "imba-snowpack": "^0.0.6",
-    "snowpack": "^2.7.6"
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
+    "css-loader": "^3.6.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.1",
+    "webpack-dev-server": "^3.11.0",    
     "firebase": "^7.23.0",
     "imba": "^2.0.0-alpha.96",
     "material-design-icons": "^3.0.1"
