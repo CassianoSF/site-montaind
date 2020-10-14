@@ -10,6 +10,7 @@ import Products from './tags/Products'
 import Admin from './tags/Admin'
 import Footer from './tags/components/Footer'
 import Crud from './tags/Crud'
+import Update from './tags/Update'
 
 tag App
 	def mount
@@ -24,8 +25,9 @@ tag App
 				<div route="itens">
 					<Navbar links=[{route: "produtos", name: "Produtos"}, {route: "pecas", name: "Peças"}] logout=true>
 					<main[mt: 4rem pos: relative]>
-						<Crud route="pecas">
-						<Crud route="produtos">
+						<Crud tipo={id: "pecas", name: "Peças"} route.exact="pecas">
+						<Crud tipo={id: "produtos", name: "Produtos"} route.exact="produtos">
+						<Update route=":tipo/editar/:id">
 			<div route="/site">
 				<Navbar>
 				<main[mt: 4rem pos: relative]>
