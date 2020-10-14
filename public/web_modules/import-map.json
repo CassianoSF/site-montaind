@@ -1,6 +1,0 @@
-{
-  "imports": {
-    "firebase": "./firebase.js",
-    "imba/dist/imba-router": "./imba/dist/imba-router.js"
-  }
-}
