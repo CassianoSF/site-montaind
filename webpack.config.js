@@ -1,6 +1,9 @@
 const path = require('path');
 
 module.exports = {
+	devServer: {
+		historyApiFallback: true
+	},
 	module: {
 		rules: [
 			{
@@ -28,5 +31,9 @@ module.exports = {
 		extensions: [".imba", ".js", ".json", ".css"]
 	},
 	entry: "./src/app-root.imba",
-	output: { path: __dirname + '/dist', filename: "client.js" }
+	output: { 
+		publicPath: "/",
+		path: __dirname + '/dist', 
+		filename: "client.js" 
+	}
 }
