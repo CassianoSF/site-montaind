@@ -13,7 +13,7 @@ export default tag PiecesHeader
 	css
 		.header
 			pos: relative
-			bgi: url("imgs/home4.jpg")
+			bgi: url("/imgs/home4.jpg")
 			bgs: cover
 			bgp: center
 			h: 300px

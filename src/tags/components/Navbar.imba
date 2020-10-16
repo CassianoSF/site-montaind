@@ -26,7 +26,7 @@ export default tag Navbar
 		<self>
 			<div.navbar>
 				<div.container>
-					<a.brand route-to="home">
+					<a.brand route-to="/site/home">
 						<img src="/imgs/logo.png">
 					<ul.menu>
 						for link in links 

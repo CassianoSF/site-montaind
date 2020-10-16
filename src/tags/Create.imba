@@ -5,12 +5,15 @@ import FileInput from '../atomic/molecules/FileInput'
 import Message from '../atomic/atoms/Message'
 import FormWrapper from '../atomic/molecules/FormWrapper'
 
-tag Update
+tag Create
 
 	prop item = {imagem: '', titulo: '', valor: '', descricao: ''}
 	prop errors = {imagem: false, titulo: false, valor: false, descricao: false}
 
-	def updateItem
+	def mount
+		item.tipo = route.params.tipo
+
+	def createItem
 		errors = {imagem: false, titulo: false, valor: false, descricao: false}
 
 		for own field of item
@@ -25,11 +28,12 @@ tag Update
 		
 		if Object.values(errors).every(do |error| !error)
 			console.log item
+			item = {imagem: '', titulo: '', valor: '', descricao: ''}
 
 	<self>
-		<div.update>
-			<FormWrapper @submit=updateItem!>
-				<div slot="title"> "EDITAR" 
+		<div.create>
+			<FormWrapper @submit=createItem!>
+				<div slot="title"> "CRIAR" 
 				<div[pb: .5rem]>
 					<FileInput error=errors.imagem bind.data=item.imagem>
 					<Message error=errors.imagem>
@@ -46,14 +50,14 @@ tag Update
 					if loading
 						<i[mr: .5rem].fa.fa-spinner.fa-pulse>
 					else
-						<i[mr: .5rem].fa.fa-edit>
-					"Editar"
+						<i[mr: .5rem].fa.fa-plus-circle>
+					"Criar"
 
 	css
-		.update
+		.create
 			size: 100%
 			py: 5rem
 			d: flex ai: center jc: center
 			bg: grey2
 
-export default Update
+export default Create

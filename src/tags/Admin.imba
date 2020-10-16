@@ -9,13 +9,14 @@ export default tag Admin
 
 	def doLogin
 		loading = true
-		try
-			await fb.doLogin(email, password)
-			clear()
-			router.go('/admin/itens/produtos')
-		catch err
-			console.log "sdas"
-			clear(true)
+		router.go('/admin/itens/produtos')
+		# try
+		# 	await fb.doLogin(email, password)
+		# 	clear()
+		# 	router.go('/admin/itens/produtos')
+		# catch err
+		# 	console.log "sdas"
+		# 	clear(true)
 
 	def render
 		<self>
@@ -113,4 +114,3 @@ export default tag Admin
 					c: red
 					fs: .9rem
 					mt: .25rem
-

@@ -35,7 +35,7 @@ export default tag Slider
 		<self>
 			<div.slider>
 				for id in [1 .. slideCount]
-					let img = "url(imgs/home{id}.jpg)"
+					let img = "url(/imgs/home{id}.jpg)"
 					<div[bgi: {img}].slide .show=(id is active)>
 						<div.filter>
 						<div.container>
@@ -48,9 +48,9 @@ export default tag Slider
 					for id in [1 .. slideCount]
 						<label.dot .active=(id is active) @click=changeSlide(id)>
 
-				<div[r: 0 br: 100% 0% 0% 100% / 50% 0% 0% 50%].go @click=next()>
+				<div[r: 0 rd: 100% 0% 0% 100% / 50% 0% 0% 50%].go @click=next()>
 					<i.fa.fa-angle-right>
-				<div[l: 0 br: 0% 100% 100% 0% / 0% 50% 50% 0%].go @click=prev()>
+				<div[l: 0 rd: 0% 100% 100% 0% / 0% 50% 50% 0%].go @click=prev()>
 					<i.fa.fa-angle-left>
 
 	css
@@ -96,7 +96,7 @@ export default tag Slider
 							mt: 1rem
 							c: white @hover: $orange
 							bg: $orange @hover: transparent
-							br: full
+							rd: full
 							p: 1rem 1.5rem
 							bd: 1px solid $orange
 							cursor: pointer		
@@ -112,7 +112,7 @@ export default tag Slider
 				.dot
 					mx: 6px
 					size: 10px
-					br: full
+					rd: full
 					bg: white @hover: $orange
 					cursor: pointer
 					tween: .35s

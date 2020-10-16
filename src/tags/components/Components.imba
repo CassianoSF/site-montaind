@@ -13,12 +13,11 @@ export default tag Components
 					<FadeInUp delay=i/10 >
 						<Card>
 
-	css
+	css 
 		.container
 			pt: 7rem
 			ta: center
 			px: 20%
-			bg: #fafafa
 
 			h1
 				c: black/80
@@ -27,8 +26,8 @@ export default tag Components
 				c: $grey
 
 		.grid
-			mb: 7rem
+			pb: 7rem
 			d: grid
-			grid-template-columns: repeat(4, 1fr)
+			grid-template-columns: repeat(4, minmax(0, 1fr))
 
 			

@@ -17,15 +17,15 @@ export default tag Card
 			<div.card>
 				<div.imgs>
 					for img, id in imgs
-						let url = "url(imgs/{img}.jpg)"
+						let url = "url(/imgs/{img}.jpg)"
 						<div[bgi: {url}].img .show=(id is active) >
 					if imgs.length > 1
 						<div.navigation>
 							for img, id in imgs
 								<label.dot .active=(id is active) @click=changeSlide(id)>
-						<div[r: 0 br: 100% 0% 0% 100% / 50% 0% 0% 50%].go @click=next()>
+						<div[r: 0 rd: 100% 0% 0% 100% / 50% 0% 0% 50%].go @click=next()>
 							<i.fa.fa-angle-right>
-						<div[l: 0 br: 0% 100% 100% 0% / 0% 50% 50% 0%].go @click=prev()>
+						<div[l: 0 rd: 0% 100% 100% 0% / 0% 50% 50% 0%].go @click=prev()>
 							<i.fa.fa-angle-left>
 				<h3> "Sistema Hidráulico"
 				<p> "Tempor non aliquip do laboris aliqua. Labore dolor sit labore in nisi fugiat qui. Occaecat mollit eiusmod labore voluptate anim in cupidatat do reprehenderit enim proident eiusmod cillum."
@@ -65,7 +65,7 @@ export default tag Card
 					.dot
 						mx: 6px
 						size: 10px
-						br: full
+						rd: full
 						bg: white @hover: $orange
 						cursor: pointer
 						tween: .35s
@@ -93,7 +93,7 @@ export default tag Card
 			.btn
 				c: white @hover: $orange
 				bg: $orange @hover: transparent
-				br: full
+				rd: full
 				p: .375rem .75rem
 				bd: 1px solid $orange
 				cursor: pointer		

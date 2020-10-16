@@ -47,11 +47,12 @@ export default tag Section
 									<h3> "Trabalho em Equipe"
 									<p> "Occaecat duis dolore non anim veniam reprehenderit cillum consectetur."
 						
-				<div.img[bgi: url("imgs/section5.jpg")]>
+				<div.img[bgi: url("/imgs/section5.jpg")]>
 			
 	css
 		.section
 			d: flex
+			bg: white
 			
 			.wrapper
 				p: 3rem 1.5rem
@@ -75,7 +76,7 @@ export default tag Section
 						mt: .5rem
 						size: 80px
 						c: white
-						br: full
+						rd: full
 						bg: $orange
 						d: flex ai: center
 						ta: center

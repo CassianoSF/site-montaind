@@ -1,19 +1,19 @@
-export default tag ProductsHeader
+export default tag BudgetHeader
 	def render
 		<self>
 			<div.header>
 				<div.filter>
-				<h1> "Produtos"
+				<h1> "Orçamento"
 				<p.breadcrumbs>
 					<a route-to="/home"> "HOME "
 						<i.fa.fa-chevron-right>
-					<a.active> "PRODUTOS "
+					<a.active> "ORÇAMENTO "
 						<i.fa.fa-chevron-right>
 
 	css
 		.header
 			pos: relative
-			bgi: url("/imgs/home1.jpg")
+			bgi: url("/imgs/home3.jpg")
 			bgs: cover
 			bgp: center
 			h: 300px

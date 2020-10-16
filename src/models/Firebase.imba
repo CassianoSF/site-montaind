@@ -19,7 +19,7 @@ class Firebase
 		firestore = firebase.firestore()
 		auth = firebase.auth()
 
-	def getItem tipo
+	def getItens tipo
 		firestore.collection("items").where("tipo", "==", tipo).get()
 
 	def createItem item

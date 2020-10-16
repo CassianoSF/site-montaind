@@ -15,7 +15,7 @@ export default tag Parallax
 	css
 		.parallax	
 			pos: relative
-			background-image: url("imgs/parallax1.jpg")
+			background-image: url("/imgs/parallax1.jpg")
 			w:100% h: auto
 			background-attachment: fixed
 			background-position: center

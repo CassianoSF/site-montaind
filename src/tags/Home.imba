@@ -7,6 +7,9 @@ import Components from './components/Components'
 
 export default tag Home
 
+	def mount
+		window.scrollTo(0,0)
+
 	def render
 		<self>
 			<Slider>

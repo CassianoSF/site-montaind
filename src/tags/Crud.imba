@@ -1,14 +1,16 @@
+import Button from '../atomic/atoms/Button'
+
 export default tag Crud
 
 	prop tipo
 
-	def create
+	def doCreate
 		router.go("admin/itens/{tipo.id}/criar")
 
-	def update id
+	def doUpdate id
 		router.go("admin/itens/{tipo.id}/editar/{id}")
 	
-	def delete id
+	def doDelete id
 		console.log "deleted"
 
 	def mount 
@@ -16,11 +18,11 @@ export default tag Crud
 
 	def render
 		<self>
-			<div.container>
+			<div.container[bg: white size: 100%]>
 				<div.wrapper>
 					<div.header[d:flex jc: space-between]>
 						<h2[c:grey8]> tipo.name
-						<button.btn :click.create> 
+						<Button :click=doCreate> 
 							<i.fa.fa-plus-circle[mr:.5rem]>
 							"Adicionar"
 					<table.table>
@@ -29,12 +31,13 @@ export default tag Crud
 								<th> "Título"
 								<th> "Ações"
 						<tbody>
-							<tr[bdb: 2px solid grey3]>
-								<th> "Engrenagem 20mm especial"
-								<th>
-									<div[d: flex ai:center]>
-										<i[c:yellow5 @hover: yellow7 tween: .35s mr: .5rem fs: 1.5rem mb: -2px cursor: pointer].fa.fa-edit title="Editar" :click.update("3123")>
-										<i[c:red6 @hover: red8 tween: .35s ml: .5rem fs: 1.5rem cursor: pointer].fa.fa-trash title="Excluir" :click.delete("12313")>
+							for i in [1 .. 12]
+								<tr[bdb: 2px solid grey3]>
+									<th> "Engrenagem 20mm especial"
+									<th>
+										<div[d: flex ai:center]>
+											<i[c:yellow5 @hover: yellow7 tween: .35s mr: .5rem fs: 1.5rem mb: -2px cursor: pointer].fa.fa-edit title="Editar" :click=doUpdate("3123")>
+											<i[c:red6 @hover: red8 tween: .35s ml: .5rem fs: 1.5rem cursor: pointer].fa.fa-trash title="Excluir" :click=doDelete("12313")>
 							
 	css
 		.wrapper
@@ -52,17 +55,5 @@ export default tag Crud
 				thead th
 					c: grey7
 					fw: 500
-
-			.btn
-				h: 100%
-				c: white @hover: $orange
-				bg: $orange @hover: transparent
-				rd: full
-				p: .375rem .75rem
-				bd: 1px solid $orange
-				cursor: pointer		
-				tween: .35s	
-				outline: none
-				us: none
 
 

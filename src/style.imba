@@ -5,6 +5,13 @@ global css @root
 	$indigo: #0e1229
 	$grey: #666666
 
+	&
+		h: calc(100% - 4rem)
+
+		body, html
+			h: 100%
+			bg: grey2
+
 	*@not(i)
 		m: 0 p: 0 ff: $font
 
@@ -85,9 +92,3 @@ global css @root
 				opacity: 1
 			100%
 				opacity: 0
-
-
-	
-
-
-

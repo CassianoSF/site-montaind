@@ -1,25 +1,40 @@
 import PiecesHeader from './components/PiecesHeader'
-import Products from './components/Products'
+import FadeInUp from './components/FadeInUp'
+import Card from './components/Card'
 
 export default tag Pieces
+
+	def mount
+		window.scrollTo(0,0)
+
 	def render
 		<self>
 			<PiecesHeader> 
-			<Products>
+			<div.grid>
+				for i in [0 ... 12]
+					let delay = i % 4
+					<FadeInUp delay=delay/10 >
+						<Card>
 			
 			<div.btn-wrapper>
-				<button.btn> "Carregar mais"
-					<i.fa.fa-angle-double-right>
+				<FadeInUp>
+					<button.btn> "Carregar mais"
+						<i.fa.fa-angle-double-right>
 
 	css
+		.grid
+			mt: 5rem mb: 3rem
+			d: grid
+			grid-template-columns: repeat(4, minmax(0, 1fr))
+
 		.btn-wrapper
 			d: flex jc:center
-			mb: 7rem
+			mb: 5rem
 
 			.btn
 				c: white @hover: $orange
 				bg: $orange @hover: transparent
-				br: full
+				rd: full
 				p: 1rem 1.5rem
 				bd: 1px solid $orange
 				cursor: pointer		

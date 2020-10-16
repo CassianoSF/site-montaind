@@ -127,7 +127,7 @@ export default tag Footer
 							p: 1rem
 							bg: #333333
 							fs: 1rem
-							br: xs
+							rd: xs
 							mb: .5rem
 							ta: center
 							w: 100%
@@ -153,7 +153,7 @@ export default tag Footer
 							mr: 1rem
 							bg: #333333 @hover: white
 							size: 40px
-							br: full
+							rd: full
 							d: flex	ai: center jc: center
 							tween: .35s
 

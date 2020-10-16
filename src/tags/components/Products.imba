@@ -1,9 +1,9 @@
 import Card from './Card'
 import FadeInUp from './FadeInUp'
 
-export default tag Products
+export default tag Products < div 
 	def render
-		<self>
+		<self[bg: white]>
 			<FadeInUp>
 				<div.container>
 					<h1> "Nossos Produtos"
@@ -15,7 +15,7 @@ export default tag Products
 
 	css
 		.container
-			mt: 7rem
+			pt: 7rem
 			ta: center
 			px: 20%
 
@@ -26,8 +26,8 @@ export default tag Products
 				c: $grey
 
 		.grid
-			mb: 7rem
+			pb: 7rem
 			d: grid
-			grid-template-columns: repeat(4, 1fr)
+			grid-template-columns: repeat(4, minmax(0, 1fr))
 
 			
