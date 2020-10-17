@@ -9,14 +9,12 @@ export default tag Admin
 
 	def doLogin
 		loading = true
-		router.go('/admin/itens/produtos')
-		# try
-		# 	await fb.doLogin(email, password)
-		# 	clear()
-		# 	router.go('/admin/itens/produtos')
-		# catch err
-		# 	console.log "sdas"
-		# 	clear(true)
+		try
+			await fb.doLogin(email, password)
+			clear()
+			router.go('/admin/itens/produtos')
+		catch err
+			clear(true)
 
 	def render
 		<self>

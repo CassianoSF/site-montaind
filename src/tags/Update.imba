@@ -5,34 +5,44 @@ import FileInput from '../atomic/molecules/FileInput'
 import Message from '../atomic/atoms/Message'
 import FormWrapper from '../atomic/molecules/FormWrapper'
 
+import {fb} from '../models/Firebase'
+
 tag Update
 
-	prop item = {imagem: '', titulo: '', valor: '', descricao: ''}
-	prop errors = {imagem: false, titulo: false, valor: false, descricao: false}
+	prop item = {imagens: [], titulo: '', valor: '', descricao: ''}
+	prop errors = {imagens: false, titulo: false, valor: false, descricao: false}
+
+	def mount
+		item.tipo = route.params.tipo
 
 	def updateItem
-		errors = {imagem: false, titulo: false, valor: false, descricao: false}
+		loading = true
+		errors = {imagens: false, titulo: false, valor: false, descricao: false}
 
 		for own field of item
 			if !item[field]
 				errors[field] = 'Você deve preencher este campo.'
 
-		if !item.imagem
-			errors.imagem = 'Você deve selecionar uma ou mais imagens.'
+		if !item.imagens
+			errors.imagens = 'Você deve selecionar uma ou mais imagens.'
 		
 		if !errors.valor and !item.valor.match(/^\d+(,\d{1,2})?$/)
 			errors.valor = 'Você deve digitar o valor corretamente.'
 		
 		if Object.values(errors).every(do |error| !error)
-			console.log item
+			fb.uploadImages
+		loading = false
+			
+
+		
 
 	<self>
 		<div.update>
 			<FormWrapper @submit=updateItem!>
 				<div slot="title"> "EDITAR" 
 				<div[pb: .5rem]>
-					<FileInput error=errors.imagem bind.data=item.imagem>
-					<Message error=errors.imagem>
+					<FileInput error=errors.imagens bind.data=item.imagens>
+					<Message error=errors.imagens>
 				<div[pb: .5rem]>
 					<Input error=errors.titulo bind.data=item.titulo> "Título"
 					<Message error=errors.titulo>

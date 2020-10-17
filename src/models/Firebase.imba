@@ -23,7 +23,14 @@ class Firebase
 		firestore.collection("items").where("tipo", "==", tipo).get()
 
 	def createItem item
-		firestore.collection("items").add(item)
+		let files = item.imagens
+		delete item.imagens
+		let ref = await firestore.collection("items").add(item)
+		uploadImage(ref.id, files)
+
+	def uploadImage id, files
+		for file in files
+			await firebase.storage().ref("{id}/{file.name}").put(file)
 
 	def updateItem item
 		firestore.collection("items").doc(item.id).update(item)

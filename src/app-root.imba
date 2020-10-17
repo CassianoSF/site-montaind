@@ -16,7 +16,6 @@ import Update from './tags/Update'
 
 tag App
 	def mount
-		console.log(router)
 		if router.path == "/"
 			router.go('/site/home')
 
