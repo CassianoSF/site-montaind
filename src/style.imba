@@ -57,7 +57,7 @@ global css @root
 		border-collapse: collapse
 		border-spacing: 0
 		background-image: none
-		fw: 100
+		fw: 200
 
 	button
 		fs: 1rem

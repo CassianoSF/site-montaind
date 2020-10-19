@@ -29,6 +29,7 @@ tag Create
 			errors.valor = 'Você deve digitar o valor corretamente.'
 		
 		if Object.values(errors).every(do |error| !error)
+			item.data = JSON.stringify(new Date())
 			fb.createItem(item)
 			item = {imagens: '', titulo: '', valor: '', descricao: ''}
 		loading = false

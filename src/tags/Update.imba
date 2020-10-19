@@ -1,9 +1,11 @@
-import Input from '../atomic/atoms/Input'
-import Textarea from '../atomic/atoms/Textarea'
-import Button from '../atomic/atoms/Button'
-import FileInput from '../atomic/molecules/FileInput'
-import Message from '../atomic/atoms/Message'
-import FormWrapper from '../atomic/molecules/FormWrapper'
+import Input		from '../atomic/atoms/Input'
+import Textarea		from '../atomic/atoms/Textarea'
+import Button		from '../atomic/atoms/Button'
+import Switch		from '../atomic/atoms/Switch'
+import Message		from '../atomic/atoms/Message'
+
+import FileInput	from '../atomic/molecules/FileInput'
+import FormWrapper	from '../atomic/molecules/FormWrapper'
 
 import {fb} from '../models/Firebase'
 
@@ -11,11 +13,14 @@ tag Update
 
 	prop item = {imagens: [], titulo: '', valor: '', descricao: ''}
 	prop errors = {imagens: false, titulo: false, valor: false, descricao: false}
+	prop previews = []
 
 	def mount
 		item.tipo = route.params.tipo
 
 	def updateItem
+
+		console.log item.imagens
 		loading = true
 		errors = {imagens: false, titulo: false, valor: false, descricao: false}
 
@@ -31,23 +36,39 @@ tag Update
 		
 		if Object.values(errors).every(do |error| !error)
 			fb.uploadImages
+			item = {imagens: [], titulo: '', valor: '', descricao: ''}
 		loading = false
-			
 
-		
+	def loadPreview e
+		previews = []
+		for file in e.detail
+			let reader  = new FileReader()
+			reader.onloadend = do
+				let img = <img [size: 100%]>
+				img.src = reader.result
+				previews.push(img)
+				render()
+			reader.readAsDataURL(file)
 
 	<self>
 		<div.update>
 			<FormWrapper @submit=updateItem!>
 				<div slot="title"> "EDITAR" 
 				<div[pb: .5rem]>
-					<FileInput error=errors.imagens bind.data=item.imagens>
+					<FileInput error=errors.imagens bind.data=item.imagens :change.loadPreview>
+					console.log previews
+					<div[d: flex flw: wrap]>
+						for preview in previews
+							<div.preview[pos: relative size: 100px m: .5rem bd: 1px solid black/10 p: 4px]>
+								preview
+
 					<Message error=errors.imagens>
 				<div[pb: .5rem]>
 					<Input error=errors.titulo bind.data=item.titulo> "Título"
 					<Message error=errors.titulo>
 				<div[pb: .5rem]>
-					<Input error=errors.valor bind.data=item.valor> "Valor" 
+					<Input error=errors.valor special=(item.valor is "A combinar" ? true : false) bind.data=item.valor> "Valor" 
+					<Switch error=errors.valor bind.data=item.valor> "A combinar"
 					<Message error=errors.valor>
 				<div[pb: .5rem]>
 					<Textarea error=errors.descricao bind.data=item.descricao> "Descrição"
@@ -65,5 +86,24 @@ tag Update
 			py: 5rem
 			d: flex ai: center jc: center
 			bg: grey2
+			ta: center
+
+		.preview
+			pos: relative
+			tween: .35s
+			cursor: pointer
+			
+			@hover img
+				o: .25
+			
+			@hover
+				content@after: 'Remover'
+			
+			@after
+				ff: $font 
+				c: red5
+				pos: absolute t: 0 r: 0
+				size: 100%
+				
 
 export default Update

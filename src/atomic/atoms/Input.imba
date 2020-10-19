@@ -2,20 +2,33 @@ tag Input
 
 	prop error = false
 	prop data = ''
+	prop special = false
 
 	<self>
 		<div>
-			<input required bind=data>
-			<label [bc: red bc@after: red]=error>
+			<input.specialInput=special required bind=data>
+			<label.specialLabel=special [bc: red bc@after: red]=error>
 				<span [c: red]=error> <slot>
 
 	css		
+		.specialInput
+			o: 0
+			h: 0
+			p: 0
+
+		.specialLabel
+			bdb: 1px solid white
+
+		input@focus + .specialLabel@after, input@valid + .specialLabel@after
+			x: -100%
+
 		div
 			w: 100%		
 			pos: relative
 			of: hidden
 			
 			input 
+				tween: height .3s, padding .3s
 				of: hidden
 				resize: none
 				pt: 1.5rem pb: 7px
@@ -35,7 +48,7 @@ tag Input
 
 			label
 				pe: none
-				tween: top .3s, transform .3s 
+				tween: top .3s, transform .3s, border .3s
 				origin: top left
 				pos: absolute t: 0 r: 0 b: 0 l: 0
 				bdb: 1px solid black/42
