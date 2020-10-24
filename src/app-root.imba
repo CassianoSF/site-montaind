@@ -12,7 +12,7 @@ import Admin from './tags/Admin'
 import Footer from './tags/components/Footer'
 import Crud from './tags/Crud'
 import Create from './tags/Create'
-import Update from './tags/Update'
+import Update from './tags/UpdateTest'
 
 tag App
 	def mount

@@ -14,4 +14,8 @@ tag FormButton
 			bg: #5D50C6 @hover: $orange
 			cursor: pointer
 
+					
+		.icon
+			mr: .5rem
+
 export default FormButton

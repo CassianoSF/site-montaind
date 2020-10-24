@@ -68,6 +68,15 @@ global css @root
 	.container
 		w: 100% px: 10%
 
+	.form-wrapper
+			size: 100%
+			display: flex
+			align-itens: center
+			justify-content: center
+		
+	.icon
+		mr: .5rem
+
 	@keyframes 
 		fadeInUp
 			0%

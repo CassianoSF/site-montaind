@@ -18,9 +18,12 @@ tag Update
 	def mount
 		item.tipo = route.params.tipo
 
-	def updateItem
+	def desselectImage id
+		item.imagens.splice(id, 1)
+		previews.splice(id, 1)
+		console.log previews, item.imagens
 
-		console.log item.imagens
+	def updateItem
 		loading = true
 		errors = {imagens: false, titulo: false, valor: false, descricao: false}
 
@@ -39,9 +42,9 @@ tag Update
 			item = {imagens: [], titulo: '', valor: '', descricao: ''}
 		loading = false
 
-	def loadPreview e
+	def loadPreview
 		previews = []
-		for file in e.detail
+		for file in item.imagens
 			let reader  = new FileReader()
 			reader.onloadend = do
 				let img = <img [size: 100%]>
@@ -56,10 +59,10 @@ tag Update
 				<div slot="title"> "EDITAR" 
 				<div[pb: .5rem]>
 					<FileInput error=errors.imagens bind.data=item.imagens :change.loadPreview>
-					console.log previews
+
 					<div[d: flex flw: wrap]>
-						for preview in previews
-							<div.preview[pos: relative size: 100px m: .5rem bd: 1px solid black/10 p: 4px]>
+						for preview, id in previews
+							<div.preview[pos: relative size: 100px m: .5rem bd: 1px solid black/10 p: 4px] :click=desselectImage(id)>
 								preview
 
 					<Message error=errors.imagens>

@@ -7,7 +7,6 @@ tag FileInput
 
 	def changeInput e
 		data = Array.from(e.target.files)
-		emit('change', data)
 
 	<self>
 		<Button error=error width="full">
