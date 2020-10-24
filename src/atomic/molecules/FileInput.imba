@@ -4,16 +4,33 @@ tag FileInput
 
 	prop error = false
 	prop data = ''
+	prop previews = []
 
-	def changeInput e
+	def loadPreview
 		data = Array.from(e.target.files)
+		previews = []
+		for file in data
+			let reader  = new FileReader()
+			reader.onloadend = do
+				let img = <img [size: 100%]>
+				img.src = reader.result
+				previews.push(img)
+				render()
+			reader.readAsDataURL(file)
+
 
 	<self>
 		<Button error=error width="full">
 			<i.fa.fa-upload> 
 			"Imagem(ens)"
-			<input type="file" accept="image/png, image/jpeg, image/jpg" :change.changeInput multiple>
+			<input type="file" multiple
+				accept="image/png, image/jpeg, image/jpg" 
+				:change.loadPreview>
 
+		<div[d: flex flw: wrap]>
+			for preview, id in previews
+				<div.preview[pos: relative size: 100px m: .5rem bd: 1px solid black/10 p: 4px] :click=desselectImage(id)>
+					preview
 	css
 		::-webkit-file-upload-button
 			d: none

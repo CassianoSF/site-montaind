@@ -41,7 +41,7 @@ tag Input
 				@focus + label span, @valid + label span
 					top: 0
 					scale: .875
-					c: $orange
+					c: indigo6
 
 				@focus + label@after, @valid + label@after
 					x: 0% 
@@ -57,7 +57,7 @@ tag Input
 					content: ''
 					size: 100%
 					x: -100%
-					bdb: 2px solid $orange
+					bdb: 2px solid indigo6
 					pos: absolute b: -1px r: 0
 					tween: all .3s
 

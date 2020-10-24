@@ -1,16 +1,14 @@
-import FormButton from '../atoms/FormButton'
-
-tag CustomForm < div
+tag CustomForm
 	
 	prop color = "{indigo6}"
 	prop backButton = false
 
-	<self.form>
-		<h3[background@after: color].form-title> <slot name="form-title">
-		<slot>
-		<FormButton :click=(do emit('submit'))>	<fragment> <slot name="action-button">
-		if backButton
-			<FormButton> <fragment> <slot name="back-button">
+	<self>
+		<div.form>
+			<h3[background@after: color].form-title> <slot name="form-title">
+			<slot>
+			if backButton
+				<FormButton> <fragment> <slot name="back-button">
 
 	css
 		.form

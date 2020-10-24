@@ -1,4 +1,4 @@
-import {fb} from "../models/Firebase"
+import firebase from "../models/firebase"
 
 export default tag Admin
 
@@ -10,7 +10,8 @@ export default tag Admin
 	def doLogin
 		loading = true
 		try
-			await fb.doLogin(email, password)
+			const auth = firebase.auth()
+			await auth.signInWithEmailAndPassword(email, password)
 			clear()
 			router.go('/admin/itens/produtos')
 		catch err

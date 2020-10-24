@@ -3,19 +3,29 @@ import Textarea		from '../atomic/atoms/Textarea'
 import Button		from '../atomic/atoms/Button'
 import Switch		from '../atomic/atoms/Switch'
 import Message		from '../atomic/atoms/Message'
+import FormButton   from '../atomic/atoms/FormButton'
 
 import FileInput	from '../atomic/molecules/FileInput'
 import CustomForm	from '../atomic/molecules/CustomForm'
+import Item from '../models/Item'
 
 
 tag Update
-
+	prop item = {}
+	
+	def mount
+		item = await Item.getItem(route.params.id)
+		
+	def update
+		await item.save()
+		loading = false
 
 	<self>
 		<div.form-wrapper>
 			<CustomForm color="{indigo2}">
 				<div slot="form-title"> "EDITAR"
-
+				<div[pb: .5rem]>
+					<FileInput error=errors.imagens bind.data=item.imagens>
 				<div[pb: .5rem]>
 					<Input error=errors.titulo bind.data=item.titulo> "Título"
 					<Message error=errors.titulo>
@@ -27,7 +37,7 @@ tag Update
 					<Textarea error=errors.descricao bind.data=item.descricao> "Descrição"
 					<Message error=errors.descricao>
 
-				<fragment slot="action-button">
+				<FormButton @click.update>
 					if loading
 						<i.icon.fa.fa-spinner.fa-pulse>
 					else

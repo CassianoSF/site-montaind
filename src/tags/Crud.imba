@@ -1,6 +1,6 @@
 import Button from '../atomic/atoms/Button'
 
-import {fb} from '../models/Firebase'
+import Item from '../models/Item'
 
 export default tag Crud
 
@@ -18,7 +18,7 @@ export default tag Crud
 		console.log "deleted"
 
 	def mount
-		itens = await fb.getItens(tipo.id)
+		itens = await Item.getItems(tipo.id)
 		loading = false
 		render!
 
@@ -41,9 +41,9 @@ export default tag Crud
 								<div[d: flex jc: center pos: absolute b: -3rem l: 50% x: -50%]>
 									<i[c: $orange fs: 2rem mr: .5rem].fa.fa-spinner.fa-pulse>
 							else
-								for item in itens.docs
+								for item in itens
 									<tr[bdb: 2px solid grey3]>
-										<th> item.data().titulo
+										<th> item.titulo
 										<th>
 											<div[d: flex ai:center]>
 												<i[c:yellow5 @hover: yellow7 tween: .35s mr: .5rem fs: 1.5rem mb: -2px cursor: pointer].fa.fa-edit title="Editar" :click=doUpdate(item.id)>

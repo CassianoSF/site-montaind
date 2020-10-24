@@ -1,15 +1,14 @@
 tag Message
-
-	prop error = true
+	prop error
 
 	<self>
-		<small [visibility: visible]=error> error
+		if error
+			<small .error-message>
+				error
 
-	css	
-		small
-			w: 100%
-			c: red
-			d: block
-			visibility: hidden
+	css	.error-message
+		w: 100%
+		c: red
+		d: block
 
 export default Message

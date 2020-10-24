@@ -5,33 +5,17 @@ import FileInput from '../atomic/molecules/FileInput'
 import Message from '../atomic/atoms/Message'
 import FormWrapper from '../atomic/molecules/FormWrapper'
 
-import {fb} from '../models/Firebase'
+import Item from '../models/Item'
 
 tag Create
 
-	prop item = {imagens: [], titulo: '', valor: '', descricao: ''}
-	prop errors = {imagens: false, titulo: false, valor: false, descricao: false}
+	prop item = new Item
 
 	def mount
 		item.tipo = route.params.tipo
 
 	def createItem
-		errors = {imagens: false, titulo: false, valor: false, descricao: false}
-
-		for own field of item
-			if !item[field]
-				errors[field] = 'Você deve preencher este campo.'
-
-		if !item.imagens
-			errors.imagens = 'Você deve selecionar uma ou mais imagens.'
-		
-		if !errors.valor and !item.valor.match(/^\d+(,\d{1,2})?$/)
-			errors.valor = 'Você deve digitar o valor corretamente.'
-		
-		if Object.values(errors).every(do |error| !error)
-			item.data = JSON.stringify(new Date())
-			fb.createItem(item)
-			item = {imagens: '', titulo: '', valor: '', descricao: ''}
+		await item.save()
 		loading = false
 
 	<self>
@@ -39,17 +23,17 @@ tag Create
 			<FormWrapper @submit=createItem!>
 				<div slot="title"> "CRIAR" 
 				<div[pb: .5rem]>
-					<FileInput error=errors.imagens bind.data=item.imagens>
-					<Message error=errors.imagens>
+					<FileInput error=item.errors.imagens bind.data=item.imagens>
+					<Message error=item.errors.imagens>
 				<div[pb: .5rem]>
-					<Input error=errors.titulo bind.data=item.titulo> "Título"
-					<Message error=errors.titulo>
+					<Input error=item.errors.titulo bind.data=item.titulo> "Título"
+					<Message error=item.errors.titulo>
 				<div[pb: .5rem]>
-					<Input error=errors.valor bind.data=item.valor> "Valor" 
-					<Message error=errors.valor>
+					<Input error=item.errors.valor bind.data=item.valor> "Valor" 
+					<Message error=item.errors.valor>
 				<div[pb: .5rem]>
-					<Textarea error=errors.descricao bind.data=item.descricao> "Descrição"
-					<Message error=errors.descricao>
+					<Textarea error=item.errors.descricao bind.data=item.descricao> "Descrição"
+					<Message error=item.errors.descricao>
 				<div slot="button">
 					if loading
 						<i[mr: .5rem].fa.fa-spinner.fa-pulse>

@@ -1,4 +1,4 @@
-import {fb} from '../../models/Firebase'
+import firebase from '../../models/firebase'
 
 export default tag Navbar
 
@@ -19,7 +19,8 @@ export default tag Navbar
 	prop logout = false
 
 	def doLogout
-		fb.doLogout()
+		const auth = firebase.auth()
+		await auth.signOut()
 		router.go('/admin')
 
 	def render
@@ -31,7 +32,7 @@ export default tag Navbar
 					<ul.menu>
 						for link in links 
 							<li.nav-item route-to=link.route>
-								<a.nav-link .active=(router.path.match(RegExp.new(link.route)))> link.name
+								<a.nav-link .active=(router.path.match(new RegExp(link.route)))> link.name
 						
 						<li.nav-item> if logout
 							<button.btn[ml: 2rem] @click.doLogout()>  
