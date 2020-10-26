@@ -1,11 +1,11 @@
-import Input from '../atomic/atoms/Input'
-import Textarea from '../atomic/atoms/Textarea'
-import Button from '../atomic/atoms/Button'
-import FileInput from '../atomic/molecules/FileInput'
-import Message from '../atomic/atoms/Message'
-import FormWrapper from '../atomic/molecules/FormWrapper'
+import Input from '@/components/atoms/Input'
+import Textarea from '@/components/atoms/Textarea'
+import Button from '@/components/atoms/Button'
+import FileInput from '@/components/molecules/FileInput'
+import Message from '@/components/atoms/Message'
+import FormWrapper from '@/components/molecules/FormWrapper'
 
-import Item from '../models/Item'
+import Item from '@/models/Item'
 
 tag Create
 

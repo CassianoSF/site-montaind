@@ -1,5 +1,5 @@
-import BudgetHeader from './components/BudgetHeader' 
-import FadeInUp from './components/FadeInUp'
+import BudgetHeader from '@/components/organisms/BudgetHeader' 
+import FadeInUp from '@/components/organisms/FadeInUp'
 
 
 export default tag Budget

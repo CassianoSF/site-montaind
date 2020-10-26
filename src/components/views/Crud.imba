@@ -1,6 +1,6 @@
-import Button from '../atomic/atoms/Button'
+import Button from '@/components/atoms/Button'
 
-import Item from '../models/Item'
+import Item from '@/models/Item'
 
 export default tag Crud
 

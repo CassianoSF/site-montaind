@@ -1,21 +1,21 @@
-import ProductsHeader from './components/ProductsHeader'
-import FadeInUp from './components/FadeInUp'
-import Card from './components/Card'
+import PiecesHeader from '@/components/organisms/PiecesHeader'
+import FadeInUp from '@/components/organisms/FadeInUp'
+import Card from '@/components/organisms/Card'
 
-export default tag Products
+export default tag Pieces
 
 	def mount
 		window.scrollTo(0,0)
 
 	def render
 		<self>
-			<ProductsHeader> 
+			<PiecesHeader> 
 			<div.grid>
 				for i in [0 ... 12]
 					let delay = i % 4
 					<FadeInUp delay=delay/10 >
 						<Card>
-
+			
 			<div.btn-wrapper>
 				<FadeInUp>
 					<button.btn> "Carregar mais"

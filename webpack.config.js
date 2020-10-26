@@ -28,9 +28,12 @@ module.exports = {
 		]
 	},
 	resolve: {
-		extensions: [".imba", ".js", ".json", ".css"]
+		extensions: [".imba", ".js", ".json", ".css"],
+		alias: {
+			'@': path.resolve('src')
+		}
 	},
-	entry: "./src/app-root.imba",
+	entry: "./src/App.imba",
 	output: { 
 		publicPath: "/",
 		path: __dirname + '/dist', 

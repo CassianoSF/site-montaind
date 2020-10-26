@@ -1,4 +1,4 @@
-import firebase from "../models/firebase"
+import firebase from "@/models/firebase"
 
 export default tag Admin
 

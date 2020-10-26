@@ -43,14 +43,14 @@ Item.getItem = do |id|
 	const doc = await firestore.collection("items").doc(id).get()
 	const item = doc.data()
 	item.id = doc.id
-	item
+	new Item(item)
 	
 Item.getItems = do |type|
 	const collection = await firestore.collection("items").where("tipo", "==", type).get()
 	collection.docs.map do |doc|
 		let item = doc.data()
 		item.id = doc.id
-		item
+		new Item(item)
 		
 Item.createItem = do |item|
 	let files = item.imagens
