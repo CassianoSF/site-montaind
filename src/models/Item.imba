@@ -11,6 +11,11 @@ class Item
 	prop data
 	prop id
 	prop errors = {}
+
+	constructor args
+		for own k, v of (args or {})
+			self[k] = v
+
 	
 	def save
 		data = (new Date).toJSON()
