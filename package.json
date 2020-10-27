@@ -2,18 +2,21 @@
   "scripts": {
     "dev": "webpack-dev-server --hot --content-base dist/",
     "build": "webpack --mode=production",
-    "watch": "webpack --mode=development --watch --progress --colors --display-modules"
+    "watch": "webpack --mode=development --watch --progress --colors --display-modules",
+    "test:run": "imba cypress/run-test.imba",
+    "test:open": "imba cypress/run-test.imba"
   },
   "devDependencies": {
+    "cypress": "^5.4.0",
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
     "css-loader": "^3.6.0",
-    "style-loader": "^1.2.1",
-    "webpack": "^4.44.1",
-    "webpack-dev-server": "^3.11.0",
     "firebase": "^7.23.0",
     "imba": "^2.0.0-alpha.96",
-    "material-design-icons": "^3.0.1"
+    "material-design-icons": "^3.0.1",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.1",
+    "webpack-dev-server": "^3.11.0"
   }
 }
