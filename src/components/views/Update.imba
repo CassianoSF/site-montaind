@@ -45,4 +45,11 @@ tag Update
 					"Editar"
 
 
+	css
+		.form-wrapper
+			size: 100%
+			display: flex
+			align-itens: center
+			justify-content: center
+
 export default Update

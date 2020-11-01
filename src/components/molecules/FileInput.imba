@@ -6,7 +6,7 @@ tag FileInput
 	prop data = ''
 	prop previews = []
 
-	def loadPreview
+	def loadPreview e
 		data = Array.from(e.target.files)
 		previews = []
 		for file in data
@@ -18,7 +18,6 @@ tag FileInput
 				render()
 			reader.readAsDataURL(file)
 
-
 	<self>
 		<Button error=error width="full">
 			<i.fa.fa-upload> 
@@ -27,10 +26,11 @@ tag FileInput
 				accept="image/png, image/jpeg, image/jpg" 
 				:change.loadPreview>
 
-		<div[d: flex flw: wrap]>
+		<div.preview>
 			for preview, id in previews
-				<div.preview[pos: relative size: 100px m: .5rem bd: 1px solid black/10 p: 4px] :click=desselectImage(id)>
+				<div.preview-item :click=desselectImage(id)>
 					preview
+
 	css
 		::-webkit-file-upload-button
 			d: none
@@ -45,5 +45,15 @@ tag FileInput
 			outline: none
 			size: 100%
 			pos: absolute t: 0 r: 0
+
+		.preview
+			d: flex flw: wrap
+
+		.preview-item
+			pos: relative
+			size: 100px
+			m: .5rem
+			bd: 1px solid black/10
+			p: 4px
 
 export default FileInput

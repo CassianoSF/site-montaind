@@ -68,6 +68,7 @@ Item.uploadImage = do |id, files|
 		await storage.ref("{id}/{file.name}").put(file)
 
 Item.updateItem = do |item|
+	console.log(item)
 	firestore.collection("items").doc(item.id).update(item)
 
 Item.deleteItem = do |item|

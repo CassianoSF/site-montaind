@@ -3,7 +3,7 @@ tag CustomForm
 	prop color = "{indigo6}"
 	prop backButton = false
 
-	<self>
+	<self.form>
 		<div.form>
 			<h3[background@after: color].form-title> <slot name="form-title">
 			<slot>
@@ -12,7 +12,8 @@ tag CustomForm
 
 	css
 		.form
-			max-width: 450px
+			width: 50vw
+			max-width: 500px
 			padding: 1rem
 			margin: 1.5rem
 			shadow: lg
