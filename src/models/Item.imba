@@ -35,10 +35,10 @@ class Item
 		errors = {}
 		if not titulo
 			errors.titulo = 'Você deve digitar um título.'
-		if not descricao
-			errors.descricao = 'Você deve digitar uma descrição.'
-		if not imagens
-			errors.imagens = 'Você deve selecionar uma ou mais imagens.'
+		# if not descricao
+		# 	errors.descricao = 'Você deve digitar uma descrição.'
+		# if not imagens
+		# 	errors.imagens = 'Você deve selecionar uma ou mais imagens.'
 
 Item.getItem = do |id|
 	const img_refs = await storage.ref("{id}").list()

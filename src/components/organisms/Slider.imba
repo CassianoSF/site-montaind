@@ -41,8 +41,8 @@ export default tag Slider
 						<div.container>
 							<div.wrapper>
 								<h1> "Montagem e Equipamentos Industriais"
-								<p> "Anim eiusmod cillum officia fugiat incididunt labore."
-								<button.btn> "Peça um orçamento"
+								<button.btn @click=router.go('/site/orcamento')> 
+									"Peça um orçamento"
 
 				<div.navigation>
 					for id in [1 .. slideCount]

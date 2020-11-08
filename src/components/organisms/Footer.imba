@@ -11,7 +11,7 @@ export default tag Footer
 							<div.wrapper>
 								<i.fa.fa-map-marker> 
 								<div>
-									<p> "R. Princesa Isabel 192 "
+									<p> "R. Princesa Isabel 192-E"
 									<p> "São Cristóvão"
 									<p> "Chapecó | SC"
 									<p> "CEP: 89813-160"

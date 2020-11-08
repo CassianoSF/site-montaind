@@ -8,44 +8,90 @@ export default tag Section
 				<FadeInUp>
 					<div.wrapper>
 						<h1.title> "Sobre a empresa"
-						<p.text> "Ipsum magna ut ullamco commodo occaecat enim non reprehenderit cillum. Velit sit consequat cupidatat nisi excepteur qui ad nulla excepteur. Id cillum ad enim pariatur et sint mollit excepteur. Sint exercitation nulla sunt ex velit commodo id minim tempor enim aliqua ea."
+						<p.text> 
+								"A Montaind Industrial LTDA, Fundada em 2012, é uma empresa 
+								que tem como principal negócio a prestação de serviços
+								na área mecânica e equipamentos industriais.
+								Contamos com uma equipe qualificada composta por
+								engenheiro mecânico, mecânicos e soldadores que tem
+								como finalidade suprir e superar as
+								necessidades do mercado, trazendo um diferencial em
+								atendimento e qualidade em todos os projetos
+								executados, para estar sempre conquistando novas
+								parcerias."
+						<p.text>
+								"Com energia e determinação, a Montaind constrói uma
+								história de superação e crescimento, onde buscar
+								bons resultados sempre motivou a empresa a querer
+								mais, a crescer com qualidade em todos os projetos
+								executados."
+						<p.text>
+								"Fazemos de cada cliente um parceiro, é assim que
+								crescemos e seguiremos crescendo no segmento de
+								tubulações e instalações de sistemas, montagem de
+								sistema hidráulico de combate contra incêndio,
+								máquinas e equipamentos para a indústria alimentícia,
+								moveleira, entre outras."
+						<p.text>
+								"Sendo uma empresa moderna e voltada sempre para as
+								novas tendências, conta com mão de obra
+								especializada e grande experiência no mercado,
+								garantindo segurança e confiabilidade aos clientes."
 						<div.grid>
 							<div.card>
 								<div.icon>
-									<i.flaticon-050-robot-arm>
+									<i.flaticon-047-thinking>
 								<div.text>
-									<h3> "Comprometimento"
-									<p> "Occaecat duis dolore non anim veniam reprehenderit cillum consectetur."
+									<h3> "Respeito"
+									<p> "A Montaind acredita na busca continua de atingir os
+										melhores resultados, sem abrir mão da valorização, do
+										respeito ao ser humano e da seriedade  com
+										nossos colaboradores, fornecedores e clientes. "
 							<div.card>
 								<div.icon>
-									<i.flaticon-050-robot-arm>
+									<i.flaticon-032-idea>
 								<div.text>
 									<h3> "Inovação"
-									<p> "Occaecat duis dolore non anim veniam reprehenderit cillum consectetur."
+									<p> "Somos uma empresa voltada a inovação, buscamos novas
+										formas de fazer as coisas, acreditamos na capacidade de
+										superar limites e de pensar o nosso negócio a partir das
+										pessoas, a quem damos nosso maior valor."
 							<div.card>
 								<div.icon>
-									<i.flaticon-050-robot-arm>
+									<i.flaticon-029-worker>
 								<div.text>
 									<h3> "Segurança"
-									<p> "Occaecat duis dolore non anim veniam reprehenderit cillum consectetur."
+									<p> "Atuar com excelência operacional e qualidade, 
+									    com a eliminação de perigos e riscos à 
+										saúde e segurança além de mitigar impactos ambientais 
+										faz parte de nossa missão."
 							<div.card>
 								<div.icon>
-									<i.flaticon-050-robot-arm>
+									<i.flaticon-035-book>
 								<div.text>
 									<h3> "Ética"
-									<p> "Occaecat duis dolore non anim veniam reprehenderit cillum consectetur."
+									<p> "Atuamos de forma íntegra e ética com todos os
+										públicos, em especial agentes públicos, não tolerando a prática de
+										quaisquer atos que violem as regras do trabalho ético e as leis
+										anticorrupção aplicáveis. "
 							<div.card>
 								<div.icon>
-									<i.flaticon-050-robot-arm>
+									<i.flaticon-001-conveyor-2>
 								<div.text>
 									<h3> "Profissionalismo"
-									<p> "Occaecat duis dolore non anim veniam reprehenderit cillum consectetur."
+									<p> "Desenvolvemos e capacitamos nossos colaboradores
+										através de treinamentos técnicos, operacionais e comportamentais, 
+										visando aprimorar as competências e, consequentemente, atender 
+										com mais eficiência as demandas de nossos processos. "
 							<div.card>
 								<div.icon>
-									<i.flaticon-050-robot-arm>
+									<i.flaticon-026-settings-2>
 								<div.text>
 									<h3> "Trabalho em Equipe"
-									<p> "Occaecat duis dolore non anim veniam reprehenderit cillum consectetur."
+									<p> "Buscamos basear a empresa em pessoas com senso de urgência,
+										proativas, focadas, que pensem e ajam de acordo com os objetivos e
+										sejam sempre positivas diante das crescentes necessidades de
+										clientes e fornecedores. "
 						
 				<div.img[bgi: url("/imgs/section5.jpg")]>
 			
@@ -62,6 +108,10 @@ export default tag Section
 
 				p
 					c: $grey
+
+				.text
+					text-align: justify
+					margin-right: 20px
 
 				.grid
 					mt: 4rem

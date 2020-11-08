@@ -12,6 +12,16 @@ export default tag Budget
 			$textarea.style.height = "100%"
 			$textarea.style.height = "{$textarea.scrollHeight}px"
 
+	def sendBudget()
+		loading = true
+		const res = await window.fetch('https://us-central1-site-montaind-67a09.cloudfunctions.net/sendMail',{
+			method: 'post',
+			body: 'orcamento'
+		})
+		loading = false
+		message = await res.json()
+		console.log(message)
+
 	def mount
 		window.scrollTo(0,0)
 
@@ -47,7 +57,7 @@ export default tag Budget
 							<small [visibility: visible]=errors.itens > errors.itens
 			<FadeInUp>
 				<div.btn-wrapper>
-					<button.btn> "Enviar"
+					<button.btn @click=sendBudget()> "Enviar"
 						<i.fa.fa-paper-plane>
 
 	css

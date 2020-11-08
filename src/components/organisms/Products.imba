@@ -13,7 +13,6 @@ export default tag Products < div
 			<FadeInUp>
 				<div.container>
 					<h1> "Nossos Produtos"
-					<p> "Magna cupidatat consequat qui amet reprehenderit mollit eu anim aute tempor amet proident. Est veniam aute ad ut enim est proident dolor."
 			<div.grid>
 				for item, i in items
 					<FadeInUp delay=i/10 >
