@@ -12,11 +12,15 @@ export default tag Crud
 	def doCreate
 		router.go("admin/itens/{tipo.id}/criar")
 
-	def doUpdate id
-		router.go("admin/itens/{tipo.id}/editar/{id}")
+	def doUpdate item
+		router.go("admin/itens/{tipo.id}/editar/{item.id}")
 	
-	def doDelete id
-		console.log "deleted"
+	def doDelete item
+		loading = true
+		await item.delete()
+		itens = await Item.getItems(tipo.id)
+		loading = false
+		render!
 
 	def mount
 		itens = await Item.getItems(tipo.id)
@@ -46,8 +50,8 @@ export default tag Crud
 										<th> item.titulo
 										<th>
 											<div[d: flex ai:center]>
-												<i[c:yellow5 @hover: yellow7 tween: .35s mr: .5rem fs: 1.5rem mb: -2px cursor: pointer].fa.fa-edit title="Editar" :click=doUpdate(item.id)>
-												<i[c:red6 @hover: red8 tween: .35s ml: .5rem fs: 1.5rem cursor: pointer].fa.fa-trash title="Excluir" :click=doDelete(item.id)>
+												<i[c:yellow5 @hover: yellow7 tween: .35s mr: .5rem fs: 1.5rem mb: -2px cursor: pointer].fa.fa-edit title="Editar" :click=doUpdate(item)>
+												<i[c:red6 @hover: red8 tween: .35s ml: .5rem fs: 1.5rem cursor: pointer].fa.fa-trash title="Excluir" :click=doDelete(item)>
 							
 	css
 		.wrapper

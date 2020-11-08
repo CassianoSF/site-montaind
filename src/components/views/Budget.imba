@@ -43,7 +43,7 @@ export default tag Budget
 							<div.input-wrapper>
 								<textarea$textarea .error=errors.itens .animated-input :keydown.autosize() rows="1" required bind=orcamento.itens>
 								<label [c: red bdb: 1px solid red bdb@before: 2px solid red]=errors.itens .animated-label>
-									<span.content-name> "Itens"
+									<span.content-name> "Escreva o que deseja orçar aqui"
 							<small [visibility: visible]=errors.itens > errors.itens
 			<FadeInUp>
 				<div.btn-wrapper>

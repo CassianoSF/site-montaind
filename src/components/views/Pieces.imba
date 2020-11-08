@@ -1,25 +1,29 @@
 import PiecesHeader from '@/components/organisms/PiecesHeader'
 import FadeInUp from '@/components/organisms/FadeInUp'
 import Card from '@/components/organisms/Card'
+import Item from '@/models/Item'
 
 export default tag Pieces
 
 	def mount
+		items = await Item.getItems('pecas')
+		console.log items
+		render()
 		window.scrollTo(0,0)
 
 	def render
 		<self>
 			<PiecesHeader> 
 			<div.grid>
-				for i in [0 ... 12]
+				for item, i in items
 					let delay = i % 4
 					<FadeInUp delay=delay/10 >
-						<Card>
+						<Card item=item>
 			
-			<div.btn-wrapper>
-				<FadeInUp>
-					<button.btn> "Carregar mais"
-						<i.fa.fa-angle-double-right>
+			# <div.btn-wrapper>
+			# 	<FadeInUp>
+			# 		<button.btn> "Carregar mais"
+			# 			<i.fa.fa-angle-double-right>
 
 	css
 		.grid

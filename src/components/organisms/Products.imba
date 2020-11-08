@@ -1,7 +1,13 @@
 import Card from './Card'
 import FadeInUp from './FadeInUp'
+import Item from '@/models/Item'
 
 export default tag Products < div 
+
+	def mount
+		items = await Item.getItems('produtos')
+		render()
+
 	def render
 		<self[bg: white]>
 			<FadeInUp>
@@ -9,9 +15,9 @@ export default tag Products < div
 					<h1> "Nossos Produtos"
 					<p> "Magna cupidatat consequat qui amet reprehenderit mollit eu anim aute tempor amet proident. Est veniam aute ad ut enim est proident dolor."
 			<div.grid>
-				for i in [0 ... 4] 
+				for item, i in items
 					<FadeInUp delay=i/10 >
-						<Card>
+						<Card item=item>
 
 	css
 		.container

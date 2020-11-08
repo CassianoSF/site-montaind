@@ -1,35 +1,35 @@
 export default tag Card
-	
-	prop imgs = ["1", "2", "3", "4"]
 	prop active = 0
+	prop item
 
 	def changeSlide id
 		active = id
 
 	def prev
-		active = active is 0 ? imgs.length - 1 : active - 1
+		active = active is 0 ? item.imgs_urls.length - 1 : active - 1
 
 	def next
-		active = active is imgs.length - 1 ? 0 : active + 1
+		active = active is item.imgs_urls.length - 1 ? 0 : active + 1
 
 	def render
+		console.log(item)
 		<self>
 			<div.card>
 				<div.imgs>
-					for img, id in imgs
-						let url = "url(/imgs/{img}.jpg)"
+					for img, id in item.imgs_urls
+						let url = "url({img})"
 						<div[bgi: {url}].img .show=(id is active) >
-					if imgs.length > 1
+					if item.imgs_urls.length > 1
 						<div.navigation>
-							for img, id in imgs
+							for img, id in item.imgs_urls
 								<label.dot .active=(id is active) @click=changeSlide(id)>
 						<div[r: 0 rd: 100% 0% 0% 100% / 50% 0% 0% 50%].go @click=next()>
 							<i.fa.fa-angle-right>
 						<div[l: 0 rd: 0% 100% 100% 0% / 0% 50% 50% 0%].go @click=prev()>
 							<i.fa.fa-angle-left>
-				<h3> "Sistema Hidráulico"
-				<p> "Tempor non aliquip do laboris aliqua. Labore dolor sit labore in nisi fugiat qui. Occaecat mollit eiusmod labore voluptate anim in cupidatat do reprehenderit enim proident eiusmod cillum."
-				<button.btn> "Adicionar"
+				<h3> item.titulo
+				<p> item.descricao
+				# <button.btn> "Adicionar"
 
 	css
 		.card

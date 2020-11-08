@@ -4,6 +4,7 @@ import Button from '@/components/atoms/Button'
 import FileInput from '@/components/molecules/FileInput'
 import Message from '@/components/atoms/Message'
 import FormButton from '@/components/atoms/FormButton'
+import Switch from '@/components/atoms/Switch'
 
 import Item from '@/models/Item'
 
@@ -30,12 +31,13 @@ export default tag Create
 					<Input error=item.errors.titulo bind.data=item.titulo> "Título"
 					<Message error=item.errors.titulo>
 				<div[pb: .5rem]>
-					<Input error=item.errors.valor bind.data=item.valor> "Valor" 
+					<Input error=item.errors.valor special=(item.valor is "A combinar" ? true : false) bind.data=item.valor> "Valor" 
+					<Switch error=item.errors.valor bind.data=item.valor> "A combinar"
 					<Message error=item.errors.valor>
 				<div[pb: .5rem]>
 					<Textarea error=item.errors.descricao bind.data=item.descricao> "Descrição"
 					<Message error=item.errors.descricao>
-				<FormButton :mouseover=(do hover=true) :mouseout=(do hover=false) :click=createItem()>
+				<FormButton :click=createItem()>
 					<div>
 						if loading
 							<i[mr: .5rem].fa.fa-spinner.fa-pulse>

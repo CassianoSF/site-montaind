@@ -10,27 +10,27 @@ export default tag Footer
 						<div.info>
 							<div.wrapper>
 								<i.fa.fa-map-marker> 
-								<p> "203 Fake St. Mountain View, San Francisco, California, USA"
+								<div>
+									<p> "R. Princesa Isabel 192 "
+									<p> "São Cristóvão"
+									<p> "Chapecó | SC"
+									<p> "CEP: 89813-160"
 							<div.wrapper>
 								<i.fa.fa-phone> 
-								<p> "(49) 99999-9999"
+								<p> "(49) 3323-6109"
 							<div.wrapper>
 								<i.fa.fa-envelope> 
-								<p> "info@montaind.com"
+								<p> "montaind.comercial@gmail.com"
 					<div.col>
 						<h3> "Links"
 						<div.links>
-							<div.wrapper>
-								<i.fa.fa-long-arrow-right> 
+							<div.wrapper route-to='home'> 
 								<a.active> "Home"
-							<div.wrapper>
-								<i.fa.fa-long-arrow-right> 
+							<div.wrapper route-to='pecas'> 
 								<a> "Peças"
-							<div.wrapper>
-								<i.fa.fa-long-arrow-right> 
+							<div.wrapper route-to='produtos'> 
 								<a> "Produtos"
-							<div.wrapper>
-								<i.fa.fa-long-arrow-right> 
+							<div.wrapper route-to='orcamento'> 
 								<a> "Orçamento"
 					
 					<div.col>
@@ -53,7 +53,7 @@ export default tag Footer
 								<FadeInUp delay=.3>
 									<a href="#"> 
 										<i.fa.fa-instagram>
-				<p.copyright> "Copyright ©2020 All rights reserved | This website is made with Imba"
+				<p.copyright> "Montaind ©2020"
 
 	
 	css

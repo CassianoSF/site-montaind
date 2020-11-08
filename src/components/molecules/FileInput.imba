@@ -1,5 +1,4 @@
 import Button from '../atoms/Button'
-import Spinner from '../atoms/Spinner'
 
 tag FileInput
 
@@ -48,9 +47,7 @@ tag FileInput
 				accept="image/png, image/jpeg, image/jpg" 
 				:change.loadPreview>
 
-		if loadingPreview
-			<Spinner>
-		else
+		unless loadingPreview
 			<div.preview>
 				for preview, i in previews
 					<div.preview-item @click=removeImg(i)>
