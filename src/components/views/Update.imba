@@ -17,6 +17,7 @@ tag Update
 		item = await Item.getItem(route.params.id)
 		
 	def update
+		loading = true
 		await item.save()
 		loading = false
 
@@ -24,8 +25,8 @@ tag Update
 		<div.form-wrapper>
 			<CustomForm color="{indigo2}">
 				<div slot="form-title"> "EDITAR"
-				<div[pb: .5rem]>
-					<FileInput error=item.errors.imagens bind.data=item.imagens>
+				<div[pb: .5rem]>			
+					<FileInput error=item.errors.imagens bind.data=item.imagens imagens=item.imagens>
 				<div[pb: .5rem]>
 					<Input error=item.errors.titulo bind.data=item.titulo> "Título"
 					<Message error=item.errors.titulo>

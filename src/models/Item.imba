@@ -22,8 +22,7 @@ class Item
 		validates()
 		if not Object.keys(errors).length
 			let obj = Object.assign({}, self)
-			delete obj.errors
-			delete obj.id
+
 			if id
 				await Item.updateItem(obj)
 			else
@@ -34,20 +33,22 @@ class Item
 		
 	def validates		
 		errors = {}
-		for own field of self
-			if not self[field]
-				errors[field] = 'Você deve preencher este campo.'
-
-		if not self.imagens
+		if not titulo
+			errors.titulo = 'Você deve digitar um título.'
+		if not descricao
+			errors.descricao = 'Você deve digitar uma descrição.'
+		if not imagens
 			errors.imagens = 'Você deve selecionar uma ou mais imagens.'
-		
-		if !errors.valor and !self.valor.match(/^\d+(,\d{1,2})?$/)
-			errors.valor = 'Você deve digitar o valor corretamente.'
 
 Item.getItem = do |id|
+	const img_refs = await storage.ref("{id}").list()
+	const images_urls = await Promise.all(img_refs.items.map do(ref) ref.getDownloadURL())
+	const images_responses = await Promise.all(images_urls.map do(url) window.fetch(url))
+	const images = await Promise.all(images_responses.map do(img_res) img_res.blob())
 	const doc = await firestore.collection("items").doc(id).get()
 	const item = doc.data()
 	item.id = doc.id
+	item.imagens = images
 	new Item(item)
 	
 Item.getItems = do |type|
@@ -60,16 +61,24 @@ Item.getItems = do |type|
 Item.createItem = do |item|
 	let files = item.imagens
 	delete item.imagens
+	delete item.id
+	delete item.errors
 	let ref = await firestore.collection("items").add(item)
-	Item.uploadImage(ref.id, files)
+	await Item.uploadImage(ref.id, files)
 	
 Item.uploadImage = do |id, files|
-	for file in files
-		await storage.ref("{id}/{file.name}").put(file)
+	const currentList = await storage.ref("{id}").listAll()
+	await Promise.all(currentList.items.map do(ref) ref.delete())
+	await Promise.all(files.map do(file) storage.ref("{id}/{file.name}").put(file))
 
 Item.updateItem = do |item|
-	console.log(item)
-	firestore.collection("items").doc(item.id).update(item)
+	let id = item.id
+	let files = item.imagens
+	delete item.imagens
+	delete item.id
+	delete item.errors
+	await firestore.collection("items").doc(id).update(item)
+	await Item.uploadImage(id, files)
 
 Item.deleteItem = do |item|
 	firestore.collection("items").doc(item.id).delete()

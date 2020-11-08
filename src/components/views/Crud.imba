@@ -1,4 +1,5 @@
 import Button from '@/components/atoms/Button'
+import Spinner from '@/components/atoms/Spinner'
 
 import Item from '@/models/Item'
 
@@ -38,8 +39,7 @@ export default tag Crud
 								<th> "Ações"
 						<tbody>
 							if loading
-								<div[d: flex jc: center pos: absolute b: -3rem l: 50% x: -50%]>
-									<i[c: $orange fs: 2rem mr: .5rem].fa.fa-spinner.fa-pulse>
+								<Spinner>
 							else
 								for item in itens
 									<tr[bdb: 2px solid grey3]>

@@ -11,6 +11,7 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
+    "axios": "^0.21.0",
     "css-loader": "^3.6.0",
     "firebase": "^7.23.0",
     "imba": "^2.0.0-alpha.96",

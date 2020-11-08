@@ -4,13 +4,14 @@ import 'firebase/storage'
 import 'firebase/auth'
 
 const config = {
-	apiKey: "AIzaSyBWZvlUF8nBvGuyMxsEllXHPOjRKmDfgSI"
-	authDomain: "site-montaind.firebaseapp.com"
-	databaseURL: "https://site-montaind.firebaseio.com"
-	projectId: "site-montaind"
-	storageBucket: "site-montaind.appspot.com"
-	messagingSenderId: "367409790951"
-	appId: "1:367409790951:web:5988f4273d381b85008742"
+	apiKey: "AIzaSyD6VIHAAbhnfEnGWxblbO6YXCprs9Pw96M",
+	authDomain: "site-montaind-67a09.firebaseapp.com",
+	databaseURL: "https://site-montaind-67a09.firebaseio.com",
+	projectId: "site-montaind-67a09",
+	storageBucket: "site-montaind-67a09.appspot.com",
+	messagingSenderId: "927054406079",
+	appId: "1:927054406079:web:41581606f2eccaa681010a",
+	measurementId: "G-TXSBM5Q0LD"
 }
 
 firebase.initializeApp(config)

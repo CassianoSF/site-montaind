@@ -3,11 +3,11 @@ import Textarea from '@/components/atoms/Textarea'
 import Button from '@/components/atoms/Button'
 import FileInput from '@/components/molecules/FileInput'
 import Message from '@/components/atoms/Message'
-import FormWrapper from '@/components/molecules/FormWrapper'
+import FormButton from '@/components/atoms/FormButton'
 
 import Item from '@/models/Item'
 
-tag Create
+export default tag Create
 
 	prop item = new Item
 
@@ -15,12 +15,13 @@ tag Create
 		item.tipo = route.params.tipo
 
 	def createItem
+		loading = true
 		await item.save()
 		loading = false
 
 	<self>
 		<div.create>
-			<FormWrapper @submit=createItem!>
+			<form @submit.prevent>
 				<div slot="title"> "CRIAR" 
 				<div[pb: .5rem]>
 					<FileInput error=item.errors.imagens bind.data=item.imagens>
@@ -34,12 +35,13 @@ tag Create
 				<div[pb: .5rem]>
 					<Textarea error=item.errors.descricao bind.data=item.descricao> "Descrição"
 					<Message error=item.errors.descricao>
-				<div slot="button">
-					if loading
-						<i[mr: .5rem].fa.fa-spinner.fa-pulse>
-					else
-						<i[mr: .5rem].fa.fa-plus-circle>
-					"Criar"
+				<FormButton :mouseover=(do hover=true) :mouseout=(do hover=false) :click=createItem()>
+					<div>
+						if loading
+							<i[mr: .5rem].fa.fa-spinner.fa-pulse>
+						else
+							<i[mr: .5rem].fa.fa-plus-circle>
+						"Criar"
 
 	css
 		.create
@@ -48,4 +50,23 @@ tag Create
 			d: flex ai: center jc: center
 			bg: grey2
 
-export default Create
+			form
+				w: 95% max-width: 600px
+				p: 1rem
+				shadow: lg
+				bg: white
+
+				h3
+					ta: center
+					mb: 3rem
+					pos: relative
+					pb: .5rem
+
+					@after
+						content: ''
+						tween: .35s
+						bg: #5D50C6
+						w: 72px
+						h: 5px
+						pos: absolute b: 0 l: 50%
+						x: -50%
