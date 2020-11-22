@@ -22,9 +22,13 @@ app.use((req, res) => {
   const mailOptions = {
     from: 'Montaind Orçamentos <montaind.comercial@gmail.com>',
     to: 'montaind.comercial@gmail.com',
-    subject: 'Orçamento de ' + req.body.nome,
+    subject: 'Orçamento de teste' + req.body.nome,
     html: `<p style="font-size: 16px;">${JSON.stringify(req.body)}</p>`
   };
+  
+  console.log("body", req.body)
+  console.log("params", req.params)
+  console.log("query", req.query)
 
   // Envia email 
   return transporter.sendMail(mailOptions, (erro, info) => {

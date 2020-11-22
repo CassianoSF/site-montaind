@@ -16,7 +16,7 @@ export default tag Budget
 		loading = true
 		const res = await window.fetch('https://us-central1-site-montaind-67a09.cloudfunctions.net/sendMail',{
 			method: 'post',
-			body: 'orcamento'
+			body: JSON.stringify(orcamento)
 		})
 		loading = false
 		message = await res.json()
