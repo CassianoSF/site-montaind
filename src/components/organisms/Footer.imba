@@ -41,9 +41,9 @@ export default tag Footer
 						<div.social>
 							<h3> "Fale conosco"
 							<div.wrapper>
-								<FadeInUp delay=.0>
-									<a href="#"> 
-										<i.fa.fa-twitter>
+								# <FadeInUp delay=.0>
+								# 	<a href="#"> 
+								# 		<i.fa.fa-twitter>
 								<FadeInUp delay=.1>
 									<a href="#"> 
 										<i.fa.fa-linkedin>
