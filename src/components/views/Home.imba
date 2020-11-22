@@ -2,8 +2,6 @@ import Slider from '@/components/organisms/Slider'
 import Services from '@/components/organisms/Services'
 import Section from '@/components/organisms/Section'
 import Parallax from '@/components/organisms/Parallax'
-import Products from '@/components/organisms/Products'
-import Components from '@/components/organisms/Components'
 
 export default tag Home
 
@@ -16,5 +14,3 @@ export default tag Home
 			<Services>
 			<Section>
 			<Parallax>
-			<Products>
-			<Components>
